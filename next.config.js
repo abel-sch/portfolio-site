@@ -1,6 +1,16 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+module.exports = {
+	webpack: config => {
+		config.module.rules = [
+			...config.module.rules,
+			{
+				test   : /\.md$/,
+				loader : 'frontmatter-markdown-loader',
+				options: {
+					mode: ['html']
+				}
+			}
+		];
 
-module.exports = nextConfig
+		return config;
+	}
+};

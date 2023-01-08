@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html {
+	@apply text-black;
+}
+
 body {
-  @apply bg-grey text-black;
+	margin: 0;
+	padding: 0;
+	overscroll-behavior: none;
+	min-height: 100vh;
+	min-height: --webkit-fill-available;
+}
+
+.wrapper {
+	min-height: 100vh;
+	min-height: --webkit-fill-available;
 }
