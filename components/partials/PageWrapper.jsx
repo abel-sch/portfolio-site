@@ -10,18 +10,16 @@ export default function PageWrapper(props) {
 
 	const router = useRouter();
 
-	const backgroundColor = router.asPath == '/' ? 'bg-grey' : 'bg-black';
-
 	return (
 		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<motion.div 
-				className={`wrapper transition ${backgroundColor} ${className}`}>
+			<div
+				className={`wrapper flex flex-col ${className}`}>
 				{ children }
-			</motion.div>
+			</div>
 		</>
 	)
 }

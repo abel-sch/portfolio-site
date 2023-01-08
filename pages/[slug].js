@@ -19,7 +19,9 @@ export default function Page(props) {
 			<Head>
 				<title>{title}</title>
 			</Head>
-			<PageHeader title={title}/>
+			<div class="h-full w-full bg-black grow">
+				<PageHeader title={title}/>
+			</div>
 		</>
 	)
 }

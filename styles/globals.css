@@ -13,6 +13,8 @@ body {
 	overscroll-behavior: none;
 	min-height: 100vh;
 	min-height: --webkit-fill-available;
+
+	@apply bg-grey;
 }
 
 .wrapper {

@@ -32,7 +32,7 @@ function Row(props) {
 	} = props;
 
 	return (
-		<Link href={path}>
+		<Link href={path} scroll={false}>
 			<motion.div className={`
 				text-8xl font-bold px-4 py-12 shadow-top bg-grey hover:bg-black
 				hover:text-white transition

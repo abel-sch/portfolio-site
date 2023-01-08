@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import { Manrope } from '@next/font/google';
 import { useRouter } from 'next/router';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence,motion } from 'framer-motion';
 import PageWrapper from '@components/partials/PageWrapper';
 
 
@@ -14,8 +14,15 @@ export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
 
 	return (
-		<AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
+		<AnimatePresence initial={false} mode="wait">
 			<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
+				<motion.div
+					initial={{ x: ["0%", "-100%"] }}
+					animate={{ x: "-100%" }}
+					exit={{ x: ['100%', '0%']}}
+					transition={{ ease: "easeInOut", duration: .25}}
+					className="bg-black z-50 w-screen fixed inset-0 pointer-events-none">
+				</motion.div>
 				<Component {...pageProps}/>
 			</PageWrapper>
 		</AnimatePresence>
