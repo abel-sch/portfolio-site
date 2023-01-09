@@ -10,7 +10,12 @@ module.exports = {
 		colors: {
 			'grey': '#e0e0e0',
 			'black': '#1a1a1a',
-			'white': '#ffffff'
+			'white': '#ffffff',
+			'current': 'currentColor',
+			'transparent': 'transparent',
+			'red': '#d93526',
+			'blue': '#140fff',
+			'var': 'var(--color)'
 		},
 		extend: {
 			fontFamily: {
@@ -21,5 +26,7 @@ module.exports = {
 			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography')
+	],
 }

@@ -5,17 +5,43 @@ export default function StaggeredLetters(props) {
 		text
 	} = props;
 
-	const transition =  {
-		staggerChildren: 0.25 / text.length
-	};
+	const staggerChildren = 0.2 / text.length;
+
+	const variants = {
+		initial: {
+			backgroundSize: "0% .15em",
+			transition: {
+				// delay: 1,
+				staggerChildren
+			}
+		},
+		animate: {
+			backgroundSize: "100% .15em",
+			transition: {
+				delay: .5,
+				duration: .5,
+				delayChildren: .2,
+				staggerChildren
+			}
+		},
+		exit: {
+			backgroundSize: "0% .15em",
+			transition: {
+				// delay: .5,
+				duration: .5,
+				staggerDirection: -1,
+				staggerChildren
+			}
+		}
+	}
 
 	return (
 		<motion.div
-			transition={transition}
 			initial="initial"
 			animate="animate"
 			exit="exit"
-			className="inline"
+			className="inline bg-gradient-to-r from-blue to-blue bg-left-bottom bg-no-repeat bg-[length:100%_0.15em]"
+			variants={variants}
 		>
 			{text.split('').map((letter, index) => <Letter key={index}>{letter}</Letter>)}
 		</motion.div>
@@ -30,17 +56,14 @@ function Letter(props) {
 	const variants = {
 		initial: {
 			opacity: 0,
-			y: 0
 		},
 		animate: {
 			opacity: 1,
-			y: 0
 		},
 		exit: {
 			opacity: 0,
-			y: 0
 		}
 	}
 
-	return <motion.span variants={variants}>{children}</motion.span>;
+	return <motion.span variants={variants} transition={{ ease: "easeInOut"}}>{children}</motion.span>;
 }

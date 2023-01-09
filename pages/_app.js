@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
 
 
 	return (
-		<AnimatePresence initial={false} mode="wait">
+		<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
 			<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
 				{ isHome && <motion.div
 					initial="initial" animate="animate" exit="exit"

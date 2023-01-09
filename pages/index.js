@@ -34,7 +34,7 @@ function Row(props) {
 	return (
 		<Link href={path} scroll={false}>
 			<motion.div className={`
-				text-8xl font-bold px-4 py-12 shadow-top bg-grey hover:bg-black
+				text-6xl lg:text-8xl break-all font-bold px-4 py-6 md:py-12 shadow-top bg-grey hover:bg-black
 				hover:text-white transition
 			`}>
 				{title}
