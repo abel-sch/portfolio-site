@@ -12,17 +12,36 @@ const inter = Manrope({
 
 export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
+	const isHome = router.asPath == '/';
+
+	const variants = {
+		initial: {
+			y: ["0%", "0"],
+		},
+		animate: {
+			y: "100%",
+			transition: {
+				delay: .25,
+				ease: "easeInOut",
+				duration: .25
+			}
+		},
+		exit: {
+			y: ['100%', '0%'],
+		}
+	}
+
 
 	return (
 		<AnimatePresence initial={false} mode="wait">
 			<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
-				<motion.div
-					initial={{ x: ["0%", "-100%"] }}
-					animate={{ x: "-100%" }}
-					exit={{ x: ['100%', '0%']}}
+				{ isHome && <motion.div
+					initial="initial" animate="animate" exit="exit"
+					variants={variants}
 					transition={{ ease: "easeInOut", duration: .25}}
 					className="bg-black z-50 w-screen fixed inset-0 pointer-events-none">
 				</motion.div>
+				}
 				<Component {...pageProps}/>
 			</PageWrapper>
 		</AnimatePresence>
