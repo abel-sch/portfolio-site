@@ -21,9 +21,9 @@ export default function MyApp({ Component, pageProps }) {
 		animate: {
 			y: "100%",
 			transition: {
-				delay: .25,
+				delay: .2,
 				ease: "easeInOut",
-				duration: .25
+				duration: .2
 			}
 		},
 		exit: {
@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }) {
 				{ isHome && <motion.div
 					initial="initial" animate="animate" exit="exit"
 					variants={variants}
-					transition={{ ease: "easeInOut", duration: .25}}
+					transition={{ ease: "easeInOut"}}
 					className="bg-black z-50 w-screen fixed inset-0 pointer-events-none">
 				</motion.div>
 				}
