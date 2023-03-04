@@ -11,7 +11,6 @@ export default function StaggeredLetters(props) {
 		initial: {
 			backgroundSize: "0% .15em",
 			transition: {
-				// delay: 1,
 				staggerChildren
 			}
 		},
@@ -27,7 +26,6 @@ export default function StaggeredLetters(props) {
 		exit: {
 			backgroundSize: "0% .15em",
 			transition: {
-				// delay: .5,
 				duration: .5,
 				staggerDirection: -1,
 				staggerChildren
