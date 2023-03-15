@@ -5,17 +5,17 @@ import smoothScroller from '@scripts/utils/SmoothScroller';
 import useIsomorphicLayoutEffect from '@scripts/hooks/useIsomorphicLayoutEffect';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
 
-type project = {
-    title: string,
-    slug: string,
-    thumbnail: string
-}
+// type project = {
+//     title: string,
+//     slug: string,
+//     thumbnail: string
+// }
 
-interface Props {
-    project: project
-}
+// interface Props {
+//     project: project
+// }
 
-export default function ProjectTile(props: Props) {
+export default function ProjectTile(props) {
     const {
         project
     } = props;

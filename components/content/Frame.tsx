@@ -15,7 +15,6 @@ export default function Frame(props: Props) {
 
     const [isActive, setIsActive] = useState(false);
 
-    // const html = '<p>hoi</p>';
     return (
         <Container>
             <figure className='w-full mb-12 lg:mb-24 hidden lg:block'>
@@ -34,7 +33,7 @@ export default function Frame(props: Props) {
                     )}
                     <div className='absolute bg-grey left-0 top-0 h-8 right-0'></div>
                 </div>
-                <figcaption className="prose prose-xs mx-auto prose-grey prose-a:text-grey prose-invert w-full md:col-span-3 text-grey text-center -mt-4 text-xs" dangerouslySetInnerHTML={{__html: html}}/>
+                { html && <figcaption className="prose prose-xs mx-auto prose-grey prose-a:text-grey prose-invert w-full md:col-span-3 text-grey text-center -mt-4 text-xs" dangerouslySetInnerHTML={{__html: html}}/> }
             </figure>
         </Container>
     );

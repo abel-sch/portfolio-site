@@ -2,11 +2,11 @@ import path from 'path';
 import glob from 'glob';
 import getContent from '@scripts/content/getContent';
 
-export default async function getProjects(folder) {
+export default async function getProjects(folder:) {
     const pattern = `content/${folder}/**.md`;
 
     try {
-		const filenames: string[] = await new Promise((resolve, reject) => {
+		const filenames = await new Promise((resolve, reject) => {
 			glob(path.join(process.cwd(), pattern), (err, files) => {
 				if (err) {
 					reject(err);
