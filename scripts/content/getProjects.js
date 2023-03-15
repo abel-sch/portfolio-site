@@ -2,7 +2,7 @@ import path from 'path';
 import glob from 'glob';
 import getContent from '@scripts/content/getContent';
 
-export default async function getProjects(folder:) {
+export default async function getProjects(folder) {
     const pattern = `content/${folder}/**.md`;
 
     try {
