@@ -25,8 +25,6 @@ export default function HeroCanvas(props : ComponentProps) {
 	const [nextValues, setNextValues] = useState<{roofWidth: number, stickHeight: number}>({roofWidth: 0, stickHeight: 0});
 	const [isAnimating, setIsAnimating] = useState<boolean>(false);
 	const [isResizing, setIsResizing] = useState<boolean>(false);
-
-	// const [progress, setProgress] = useState<number>(0);
 		
 	const ease = (t: number): number  => t * (2 - t);
 	const drawLetter = (p5: p5Types) => {
@@ -107,7 +105,6 @@ export default function HeroCanvas(props : ComponentProps) {
 		if (progress >= 1) {
 			stopAnimation();
 		} 
-		// setProgress(progress => progress + .05);
 		progress += .05;
 		roofWidth = prevValues.roofWidth + (nextValues.roofWidth - prevValues.roofWidth) * ease(progress);
 		stickHeight = prevValues.stickHeight + (nextValues.stickHeight - prevValues.stickHeight) * ease(progress);
