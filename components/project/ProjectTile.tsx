@@ -1,5 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import {useRef} from 'react';
+import smoothScroller from '@scripts/utils/SmoothScroller';
+import useIsomorphicLayoutEffect from '@scripts/hooks/useIsomorphicLayoutEffect';
+
 
 type project = {
     title: string,
@@ -16,6 +20,22 @@ export default function ProjectTile(props: Props) {
         project
     } = props;
 
+    const ref = useRef(null);
+
+	useIsomorphicLayoutEffect(() => {
+		if (ref.current) {
+            smoothScroller.add(ref.current, o => {
+                console.log(o);
+            });
+		}
+
+		return () => {
+			if (ref.current) {
+				smoothScroller.remove(ref.current);
+			}
+		};
+	}, [ref]);
+
     return (
         <Link
             href={project.slug}
@@ -26,7 +46,7 @@ export default function ProjectTile(props: Props) {
                 relative overflow-hidden
             `}
         >
-        {project.title}
+        <span ref={ref}>{project.title}</span>
         <Image
             src={project.thumbnail}
             className={`
