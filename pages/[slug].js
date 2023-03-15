@@ -5,17 +5,22 @@ import Link from 'next/link';
 import {motion} from 'framer-motion';
 
 import PageHeader from '@components/PageHeader';
+import ProjectList from '@components/project/ProjectList';
 
 import getSlugs from '@scripts/content/getSlugs';
 import getContent from '@scripts/content/getContent';
+import getProjects from '@scripts/content/getProjects';
 
 export default function Page(props) {
 	const {
 		attributes: {
 			title = ''
-		} = {}
+		} = {},
+		projects = [],
 	} = props;
 
+
+	console.log(projects, 'hoi');
 	const variants = {
 		initial: {
 			opacity: 0
@@ -49,8 +54,9 @@ export default function Page(props) {
 					variants={variants}
 					className="px-4 grid grid-cols-12 gap-4 w-full"
 					>
-						<div className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 text-white prose prose-headings:text-white" dangerouslySetInnerHTML={{__html: props.html}}></div>
-					</motion.div>
+					<div className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 prose prose-invert prose-xl" dangerouslySetInnerHTML={{__html: props.html}}></div>
+				</motion.div>
+				<ProjectList projects={projects}/>
 			</div>
 		</>
 	)
@@ -59,10 +65,12 @@ export default function Page(props) {
 
 export async function getStaticProps(props) {
 	const content = await getContent(`${props.params.slug}.md`);
+	const projects = await getProjects('design');
 
 	return {
 		props: {
-			...content
+			...content,
+			projects
 		}
 	};
 }
