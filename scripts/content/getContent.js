@@ -49,6 +49,6 @@ export default async function getContent(file) {
 			content
 		},
 		html: data.html,
-		intro: intro ? markdown.render(data.attributes.intro) : null,
+		intro: data?.attributes?.intro ? markdown.render(data.attributes.intro) : null,
 	};
 }
