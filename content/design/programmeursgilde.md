@@ -6,6 +6,18 @@ intro: >
 content:
   - type: mockup
     video: /images/headers/pg_t.mp4
+  - type: screenshots
+    images:
+    - /images/screenshots/pg_d.png
+    markdown: >
+      Screenshot van https://www.programmeursgilde.nl op desktop-formaat.
+  - type: screenshots
+    images:
+    - /images/screenshots/pg_m0.png
+    - /images/screenshots/pg_m1.png
+    - /images/screenshots/pg_m2.png
+    markdown: >
+      Screenshot van https://www.programmeursgilde.nl op mobiel-formaat.
 ---
 
 Door samen de krachten de bundelen bieden de programmeurs van het collectief; Aldo Bruining, Eva Verboon en Alexander van der Meer, een breed draagvlak voor programmering van evenementen in de creatieve en culturele sector.
