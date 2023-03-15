@@ -2,5 +2,4 @@
 title: Design
 ---
 
-As independent designer, and partner of design studio Team Curry, I worked on the following projects.
-
+Als zelfstandig ontwerp, en als partner van studio Team Curry, heb ik aan de volgende projecten gewerkt.

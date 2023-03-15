@@ -1,6 +1,7 @@
 ---
 title: Programmeursgilde
 featured_image: '/images/headers/pg_header.gif'
+thumbnail: '/images/screenshots/pg_thumb4.png'
 intro: >   
   Het **Programmeursgilde** is een collectief van cultureel programmeurs dat hun vakgebied tot ambacht wil verheffen.
 content:
