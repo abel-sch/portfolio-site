@@ -1,3 +1,4 @@
+import Frame from './Frame';
 import Mockup from './Mockup';
 import Screenshots from './Screenshots';
 
@@ -6,6 +7,7 @@ interface ContentBlocks {
 }
 
 const contentBlocks: ContentBlocks = {
+	frame: Frame,
 	mockup: Mockup,
 	screenshots: Screenshots,
 }
