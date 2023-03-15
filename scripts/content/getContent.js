@@ -45,9 +45,10 @@ export default async function getContent(file) {
 				c[dash2camel(key)] = value;
 
 				return c;
-			}, {}),
+			}, {}),	
 			content
 		},
-		html: data.html
+		html: data.html,
+		intro: markdown.render(data.attributes.intro),
 	};
 }
