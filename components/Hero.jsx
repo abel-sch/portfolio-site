@@ -1,7 +1,11 @@
 import {motion} from 'framer-motion';
+import {useRef, useMemo} from 'react';
+import useResizeObserver from '@scripts/hooks/useResizeObserver';
+import dynamic from 'next/dynamic';
 
 export default function Hero(props) {
-
+	const canvasRef = useRef();
+	const canvasSize = useResizeObserver(canvasRef);
 	const variants = {
 		initial: {
 			opacity: 0
@@ -18,9 +22,15 @@ export default function Hero(props) {
 		}
 	}
 
+	const HeroCanvas = useMemo(() => dynamic(() => import('@components/HeroCanvas'), {
+		ssr: false,
+	}), []);
+
 	return (
 		<header className="w-full h-screen flex flex-col">
-			<div className="grow"></div>
+			<div ref={canvasRef} className="grow relative">
+				<HeroCanvas rect={canvasSize}/>
+			</div>
 			<div className="font-bold text-6xl py-4 px-4">
 				<motion.h1
 					initial="initial"
