@@ -20,7 +20,7 @@ export default function ProjectTile(props: Props) {
         <Link
             href={project.slug}
             className={`
-                bg-white text-[10rem] font-bold py-6 block group
+                bg-white text-8xl lg:text-[10rem] font-bold px-4 py-16 lg:p-8 block group
                 hover:text-white hover:bg-black
                 transition ease-in-out duration-700
                 relative overflow-hidden

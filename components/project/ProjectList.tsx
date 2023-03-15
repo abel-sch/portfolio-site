@@ -17,7 +17,7 @@ export default function ProjectList(props: Props) {
     } = props;
 
     return (
-        <ul>
+        <ul className='mt-24'>
         { projects.map(project => (
             <li key={project.slug}>
                 <ProjectTile project={project}/>
