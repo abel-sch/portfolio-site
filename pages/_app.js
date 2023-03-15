@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { Manrope } from '@next/font/google';
 import { useRouter } from 'next/router';
+import {useEffect} from 'react';
 import { AnimatePresence,motion } from 'framer-motion';
 import PageWrapper from '@components/partials/PageWrapper';
 
@@ -31,6 +32,18 @@ export default function MyApp({ Component, pageProps }) {
 		}
 	}
 
+	useEffect(() => {
+		const handleStart = (string) => {
+		console.log(`Loading: ${string}`)
+	}
+
+
+	router.events.on('routeChangeStart', handleStart)
+
+	return () => {
+			router.events.off('routeChangeStart', handleStart)
+		}
+	}, [router])
 
 	return (
 		<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
