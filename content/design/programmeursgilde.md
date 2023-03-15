@@ -3,6 +3,9 @@ title: Programmeursgilde
 featured_image: '/images/headers/pg_header.gif'
 intro: >   
   Het **Programmeursgilde** is een collectief van cultureel programmeurs dat hun vakgebied tot ambacht wil verheffen.
+content:
+  - type: mockup
+    video: /images/headers/pg_t.mp4
 ---
 
 Door samen de krachten de bundelen bieden de programmeurs van het collectief; Aldo Bruining, Eva Verboon en Alexander van der Meer, een breed draagvlak voor programmering van evenementen in de creatieve en culturele sector.

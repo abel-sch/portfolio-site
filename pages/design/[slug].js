@@ -3,12 +3,14 @@ import getSlugs from '@scripts/content/getSlugs';
 import getContent from '@scripts/content/getContent';
 import ProjectHeader from '@components/project/ProjectHeader';
 import ProjectDescription from '@components/project/ProjectDescription';
+import ContentBlocks from '@components/ContentBlocks';
 
 export default function Page(props) {
 	const {
 		attributes: {
 			title = '',
-            featured_image = ''
+            featured_image = '',
+			content =[]
 		} = {},
         intro,
         html
@@ -23,6 +25,7 @@ export default function Page(props) {
 			<article className="h-full w-full bg-black grow">
                 <ProjectHeader featured_image={featured_image}/>
                 <ProjectDescription intro={intro} content={html} title={title}/>
+				<ContentBlocks content={content}/>
 			</article>
 		</>
 	)
