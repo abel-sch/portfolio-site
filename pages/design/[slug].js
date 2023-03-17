@@ -7,6 +7,7 @@ import ContentBlocks from '@components/ContentBlocks';
 import SectionFooter from '@components/partials/SectionFooter';
 import ProjectList from '@components/project/ProjectList';
 import getProjects from '@scripts/content/getProjects';
+import getPages from '@scripts/content/getPages';
 
 export default function Page(props) {
 	const {
