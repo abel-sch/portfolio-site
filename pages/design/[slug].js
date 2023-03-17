@@ -4,6 +4,9 @@ import getContent from '@scripts/content/getContent';
 import ProjectHeader from '@components/project/ProjectHeader';
 import ProjectDescription from '@components/project/ProjectDescription';
 import ContentBlocks from '@components/ContentBlocks';
+import SectionFooter from '@components/partials/SectionFooter';
+import ProjectList from '@components/project/ProjectList';
+import getProjects from '@scripts/content/getProjects';
 
 export default function Page(props) {
 	const {
@@ -15,6 +18,7 @@ export default function Page(props) {
 			header_video = null,
 			header_color = 'white'
 		} = {},
+		projects = [],
 		intro,
 		html
 	} = props;
@@ -32,6 +36,12 @@ export default function Page(props) {
 					color={header_color}/>
 				<ProjectDescription intro={intro} content={html} title={title}/>
 				<ContentBlocks content={content}/>
+				{ projects && (
+					<div className="mt-72">
+						<ProjectList currentProject={title} projects={projects}/>
+					</div>
+				)}
+				<SectionFooter/>
 			</article>
 		</>
 	)
@@ -40,10 +50,12 @@ export default function Page(props) {
 
 export async function getStaticProps(props) {
 	const content = await getContent(`design/${props.params.slug}.md`);
+	const projects = await getProjects('design');
 
 	return {
 		props: {
-			...content
+			...content,
+			projects
 		}
 	};
 }

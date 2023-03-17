@@ -2,23 +2,25 @@ import {useState} from 'react';
 import ProjectTile from "./ProjectTile";
 
 type project = {
-	title: string,
-	slug: string,
+	title: string
+	slug: string
 	thumbnail: string
 }
 
 interface Props {
 	projects: project[]
+	currentProject: string | null
 }
 
 export default function ProjectList(props: Props) {
 	const {
-		projects
+		projects,
+		currentProject = ''
 	} = props;
 
 	return (
 		<ul className='mt-24'>
-			{ projects.map(project => (
+			{ projects.filter(project => project.title != currentProject).map(project => (
 				<li key={project.slug}>
 					<ProjectTile project={project}/>
 				</li>
