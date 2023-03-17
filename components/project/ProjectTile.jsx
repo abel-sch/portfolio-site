@@ -25,13 +25,21 @@ export default function ProjectTile(props) {
 	const containerSize = useResizeObserver(containerRef);
 	const textSize = useResizeObserver(ref);
 
+	const calculateOffset = (textWidth, containerWidth) => {
+		if (textWidth > containerWidth) {
+			return -1 * (textWidth - containerWidth);
+		} else {
+			return containerWidth - textWidth;
+		}
+	}
+
 	useIsomorphicLayoutEffect(() => {
-		if (ref.current && containerRef.current) {
+		if (ref.current && containerRef.current && containerSize) {
+			const maxOffset = calculateOffset(textSize.width,containerSize.width);
+
 			smoothScroller.add(ref.current, o => {
-				if (containerSize) {
-					const maxOffset = textSize.width - containerSize.width;
-					ref.current.style.transform = `translate3d(-${o.factor * maxOffset}px, 0, 0)`;
-				}
+				console.log(maxOffset);
+				ref.current.style.transform = `translate3d(${o.factor * maxOffset}px, 0, 0)`;
 			});
 		}
 
