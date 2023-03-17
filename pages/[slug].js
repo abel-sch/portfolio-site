@@ -53,7 +53,10 @@ export default function Page(props) {
 					variants={variants}
 					className="px-4 grid grid-cols-12 gap-4 w-full"
 					>
-					<div className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 prose prose-invert prose-xl" dangerouslySetInnerHTML={{__html: props.html}}></div>
+					<div
+						className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 prose prose-invert prose-xl lg:mb-24"
+						dangerouslySetInnerHTML={{__html: props.html}}>
+					</div>
 				</motion.div>
 				{ projects && <ProjectList projects={projects}/> }
 				<SectionFooter/>

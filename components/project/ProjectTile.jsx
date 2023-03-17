@@ -38,7 +38,6 @@ export default function ProjectTile(props) {
 			const maxOffset = calculateOffset(textSize.width,containerSize.width);
 
 			smoothScroller.add(ref.current, o => {
-				console.log(maxOffset);
 				ref.current.style.transform = `translate3d(${o.factor * maxOffset}px, 0, 0)`;
 			});
 		}
