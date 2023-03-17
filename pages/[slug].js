@@ -20,8 +20,6 @@ export default function Page(props) {
 		} = {},
 	} = props;
 
-
-	console.log(projects, 'hoi');
 	const variants = {
 		initial: {
 			opacity: 0
@@ -57,7 +55,7 @@ export default function Page(props) {
 					>
 					<div className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 prose prose-invert prose-xl" dangerouslySetInnerHTML={{__html: props.html}}></div>
 				</motion.div>
-				<ProjectList projects={projects}/>
+				{ projects && <ProjectList projects={projects}/> }
 				<SectionFooter/>
 			</div>
 		</>
@@ -68,7 +66,7 @@ export default function Page(props) {
 export async function getStaticProps(props) {
 	const content = await getContent(`${props.params.slug}.md`);
 
-	if (!content.attributes.projects) {
+	if (props.params.slug == 'design') {
 		const projects = await getProjects('design');
 		content.attributes.projects = projects;
 	}
