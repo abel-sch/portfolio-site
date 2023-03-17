@@ -21,6 +21,7 @@ All development is done on the `dev`-branch. Once tested, a merge to the main br
 - [ ] add big back button on deeper pages
 - [ ] make external links open in new tab
 - [ ] make page links on index page consistent in styling with other links
+- [ ] fix page transitions
 - [ ] create typography page
 - [ ] add bigger contact info
 - [ ] create hover states
