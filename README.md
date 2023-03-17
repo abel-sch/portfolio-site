@@ -42,3 +42,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] create typography page
 - [ ] add bigger contact info
 - [ ] create hover states
+- [ ] convert all js to typescript
