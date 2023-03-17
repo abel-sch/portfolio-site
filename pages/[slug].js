@@ -6,6 +6,7 @@ import {motion} from 'framer-motion';
 
 import PageHeader from '@components/PageHeader';
 import ProjectList from '@components/project/ProjectList';
+import SectionFooter from '@components/partials/SectionFooter';
 
 import getSlugs from '@scripts/content/getSlugs';
 import getContent from '@scripts/content/getContent';
@@ -57,6 +58,7 @@ export default function Page(props) {
 					<div className="col-span-12 md:col-span-9 md:col-start-4 lg:col-start-6 lg:col-span-6 prose prose-invert prose-xl" dangerouslySetInnerHTML={{__html: props.html}}></div>
 				</motion.div>
 				<ProjectList projects={projects}/>
+				<SectionFooter/>
 			</div>
 		</>
 	)
