@@ -9,7 +9,7 @@ interface Props {
 
 interface Page {
 	title: string
-	slug: string
+	path: string
 }
 
 export default function SectionFooter(props: Props) {
@@ -18,11 +18,11 @@ export default function SectionFooter(props: Props) {
 		currentSlug
 	} = props;
 
-	const filteredPages = pages.filter(page => page.slug != `/${currentSlug}`);
+	const filteredPages = pages.filter(page => page.path != currentSlug);
 	const sectionLinks = () => filteredPages.map((page, index) => (
-		<Fragment key={page.slug}>
+		<Fragment key={page.path}>
 			{ index >=0 && <> of </>}
-			<SectionLink href={page.slug}>{page.title}</SectionLink>
+			<SectionLink href={page.path}>{page.title}</SectionLink>
 		</Fragment>
 	))
 
