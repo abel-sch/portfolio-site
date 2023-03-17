@@ -3,9 +3,9 @@ import glob from 'glob';
 import getContent from '@scripts/content/getContent';
 
 export default async function getProjects(folder) {
-    const pattern = `content/${folder}/**.md`;
+	const pattern = `content/${folder}/**.md`;
 
-    try {
+	try {
 		const filenames = await new Promise((resolve, reject) => {
 			glob(path.join(process.cwd(), pattern), (err, files) => {
 				if (err) {
@@ -16,18 +16,16 @@ export default async function getProjects(folder) {
 			});
 		});
 
-        const projects = await Promise.all(filenames.map(async filename => {
-            const file = path.parse(filename);
+		const projects = await Promise.all(filenames.map(async filename => {
+			const file = path.parse(filename);
 			const content = await getContent(`${folder}/${file.base}`);
 
-            return {
-                title: content?.attributes?.title,
-                thumbnail: content?.attributes?.thumbnail,
-                slug: `${folder}/${file.name}`
-            }
-        }));
-
-        console.log(projects);
+			return {
+				title: content?.attributes?.title,
+				thumbnail: content?.attributes?.thumbnail,
+				slug: `/${folder}/${file.name}`
+			}
+		}));
 
 		return projects;
 	} catch (error) {
