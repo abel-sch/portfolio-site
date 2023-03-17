@@ -1,23 +1,50 @@
 import Image from 'next/image';
 
 interface Props {
-    featured_image: string
+    featuredImage: string,
+    type?: string
+    video?: string,
+    color: string
 }
 
 export default function ProjectHeader(props: Props) {
     const {
-        featured_image
+        featuredImage,
+        type = 'img',
+        video = '',
+        color
     } = props;
 
+    const colors = {
+        'white': 'bg-white',
+        'black': 'bg-pure-black'
+    };
+
+    const backgroundColor = () => {
+        switch (color) {
+            case 'black':
+            return colors['black'];
+            default:
+            return colors['white'];
+        }
+    }
+
     return (
-        <header className="bg-white w-full flex justify-center py-8 lg:py-16">
+        <header className={`w-full flex justify-center py-8 lg:py-16 ${backgroundColor()}`}>
             <div className="max-w-screen-lg w-full aspect-video relative">
-                <Image
-                    src={featured_image}
-                    alt=""
-                    fill
-                    priority
-                />
+                { type == 'image' && (
+                    <Image
+                        src={featuredImage}
+                        alt=""
+                        fill
+                        priority
+                    />
+                )}
+                { type == 'video' && (
+                    <video autoPlay muted loop playsInline>
+                        <source src={video} type="video/mp4"/>
+                    </video>
+                )}
             </div>
         </header>
     )

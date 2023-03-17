@@ -9,22 +9,29 @@ export default function Page(props) {
 	const {
 		attributes: {
 			title = '',
-            featured_image = '',
-			content =[]
+			featured_image = '',
+			content = [],
+			header_type = null,
+			header_video = null,
+			header_color = 'white'
 		} = {},
-        intro,
-        html
+		intro,
+		html
 	} = props;
 
-    console.log(props);
+	console.log(props);
 	return (
 		<>
 			<Head>
 				<title>{title}</title>
 			</Head>
 			<article className="h-full w-full bg-black grow">
-                <ProjectHeader featured_image={featured_image}/>
-                <ProjectDescription intro={intro} content={html} title={title}/>
+				<ProjectHeader
+					featuredImage={featured_image}
+					type={header_type}
+					video={header_video}
+					color={header_color}/>
+				<ProjectDescription intro={intro} content={html} title={title}/>
 				<ContentBlocks content={content}/>
 			</article>
 		</>
@@ -45,5 +52,5 @@ export async function getStaticProps(props) {
 
 
 export async function getStaticPaths() {
-    return getSlugs('content/design/**.md');
+	return getSlugs('content/design/**.md');
 }
