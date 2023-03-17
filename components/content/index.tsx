@@ -1,3 +1,4 @@
+import Banner from './Banner';
 import Frame from './Frame';
 import ImageBlock from './ImageBlock';
 import Mockup from './Mockup';
@@ -8,6 +9,7 @@ interface ContentBlocks {
 }
 
 const contentBlocks: ContentBlocks = {
+	banner: Banner,
 	frame: Frame,
 	image: ImageBlock,
 	mockup: Mockup,
