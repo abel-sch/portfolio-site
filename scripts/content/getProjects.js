@@ -23,7 +23,7 @@ export default async function getProjects(folder) {
 			return {
 				title: content?.attributes?.title,
 				thumbnail: content?.attributes?.thumbnail,
-				slug: `${folder}/${file.name}`
+				slug: `/${folder}/${file.name}`
 			}
 		}));
 
