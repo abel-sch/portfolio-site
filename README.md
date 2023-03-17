@@ -39,3 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] add big back button on deeper pages
 - [ ] make external links open in new tab
 - [ ] make page links on index page consistent in styling with other links
+- [ ] create typography page
+- [ ] add bigger contact info
