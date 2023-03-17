@@ -10,7 +10,7 @@ interface Props {
 export default function ProjectHeader(props: Props) {
     const {
         featuredImage,
-        type = 'img',
+        type,
         video = '',
         color
     } = props;
@@ -20,17 +20,26 @@ export default function ProjectHeader(props: Props) {
         'black': 'bg-pure-black'
     };
 
-    const backgroundColor = () => {
+
+    console.log(type);
+    const getBackgroundColorClass = () => {
         switch (color) {
             case 'black':
             return colors['black'];
-            default:
+            case 'white':
             return colors['white'];
+            default:
+            return false;
         }
     }
 
+    const backgroundColorClass = getBackgroundColorClass();
+    const style = !backgroundColorClass ? {
+        backgroundColor: color
+    } : {};
+
     return (
-        <header className={`w-full flex justify-center py-8 lg:py-16 ${backgroundColor()}`}>
+        <header style={style} className={`w-full flex justify-center py-8 lg:py-16 ${backgroundColorClass}`}>
             <div className="max-w-screen-lg w-full aspect-video relative">
                 { type == 'image' && (
                     <Image

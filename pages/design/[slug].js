@@ -11,7 +11,7 @@ export default function Page(props) {
 			title = '',
 			featured_image = '',
 			content = [],
-			header_type = null,
+			header_type = 'image',
 			header_video = null,
 			header_color = 'white'
 		} = {},
@@ -19,7 +19,6 @@ export default function Page(props) {
 		html
 	} = props;
 
-	console.log(props);
 	return (
 		<>
 			<Head>
