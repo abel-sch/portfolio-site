@@ -20,7 +20,8 @@ export default function Page(props) {
 		} = {},
 		projects = [],
 		intro,
-		html
+		html,
+		pages
 	} = props;
 
 	return (
@@ -41,7 +42,7 @@ export default function Page(props) {
 						<ProjectList currentProject={title} projects={projects}/>
 					</div>
 				)}
-				<SectionFooter/>
+				<SectionFooter currentSlug="design" pages={pages} />
 			</article>
 		</>
 	)
@@ -51,15 +52,16 @@ export default function Page(props) {
 export async function getStaticProps(props) {
 	const content = await getContent(`design/${props.params.slug}.md`);
 	const projects = await getProjects('design');
+	const pages = await getPages();
 
 	return {
 		props: {
 			...content,
-			projects
+			projects,
+			pages
 		}
 	};
 }
-
 
 
 export async function getStaticPaths() {

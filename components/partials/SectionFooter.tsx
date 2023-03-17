@@ -1,22 +1,46 @@
 import Container from "@components/Container";
 import Link from "next/link";
+import { Fragment } from "react";
 
-export default function SectionFooter() {
+interface Props {
+	pages: Page[],
+	currentSlug: string
+}
+
+interface Page {
+	title: string
+	slug: string
+}
+
+export default function SectionFooter(props: Props) {
+	const {
+		pages,
+		currentSlug
+	} = props;
+
+	const filteredPages = pages.filter(page => page.slug != `/${currentSlug}`);
+	const sectionLinks = () => filteredPages.map((page, index) => (
+		<Fragment key={page.slug}>
+			{ index >=0 && <> of </>}
+			<SectionLink href={page.slug}>{page.title}</SectionLink>
+		</Fragment>
+	))
+
 	return (
 		<Container>
 			<section className="py-12 lg:py-24 text-white w-full text-xl lg:text-4xl">
-				Bekijk ook <SectionLink href="/design">Design</SectionLink> of <SectionLink href="/type">Type</SectionLink> projecten.
+				Bekijk ook {sectionLinks()} projecten.
 			</section>
 		</Container>
 	)
 }
 
-interface Props {
+interface LinkProps {
 	href: string,
 	children: JSX.Element | string
 }
 
-function SectionLink(props: Props) {
+function SectionLink(props: LinkProps) {
 	const {
 		href,
 		children

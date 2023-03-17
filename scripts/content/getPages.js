@@ -1,9 +1,11 @@
 import path from 'path';
 import glob from 'glob';
+import getContent from '@scripts/content/getContent';
 
 export default async function getPages() {
+	const pattern = `content/**.md`;
+
 	try {
-		const pattern = 'content/**.md';
 		const filenames = await new Promise((resolve, reject) => {
 			glob(path.join(process.cwd(), pattern), (err, files) => {
 				if (err) {
@@ -14,24 +16,18 @@ export default async function getPages() {
 			});
 		});
 
-
-		const paths = filenames
-			.filter(p => !(/index\.md/i).test(p))
-			.map(filename => path.parse(filename).name);
-
-		const pages = await Promise.all(paths.map(async path => {
-			const {attributes} = await import(`content/${path}.md`);
+		const pages = await Promise.all(filenames.map(async filename => {
+			const file = path.parse(filename);
+			const content = await getContent(`${file.base}`);
 
 			return {
-				path,
-				...attributes,
-			};
+				title: content?.attributes?.title,
+				slug: `/${content?.slug}`
+			}
 		}));
 
-		return pages;
-
+		return pages.filter(page => (page.title && page.slug));
 	} catch (error) {
 		throw error;
 	}
-
 }

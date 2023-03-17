@@ -10,6 +10,7 @@ import SectionFooter from '@components/partials/SectionFooter';
 
 import getSlugs from '@scripts/content/getSlugs';
 import getContent from '@scripts/content/getContent';
+import getPages from '@scripts/content/getPages';
 import getProjects from '@scripts/content/getProjects';
 
 export default function Page(props) {
@@ -18,6 +19,8 @@ export default function Page(props) {
 			title = '',
 			projects = [],
 		} = {},
+		slug,
+		pages
 	} = props;
 
 	const variants = {
@@ -59,7 +62,7 @@ export default function Page(props) {
 					</div>
 				</motion.div>
 				{ projects && <ProjectList projects={projects}/> }
-				<SectionFooter/>
+				<SectionFooter currentSlug={slug} pages={pages}/>
 			</div>
 		</>
 	)
@@ -68,6 +71,7 @@ export default function Page(props) {
 
 export async function getStaticProps(props) {
 	const content = await getContent(`${props.params.slug}.md`);
+	const pages = await getPages();
 
 	if (props.params.slug == 'design') {
 		const projects = await getProjects('design');
@@ -77,6 +81,7 @@ export async function getStaticProps(props) {
 
 	return {
 		props: {
+			pages,
 			...content,
 		}
 	};
