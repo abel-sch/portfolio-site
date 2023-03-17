@@ -15,9 +15,9 @@ import getProjects from '@scripts/content/getProjects';
 export default function Page(props) {
 	const {
 		attributes: {
-			title = ''
+			title = '',
+			projects = [],
 		} = {},
-		projects = [],
 	} = props;
 
 
@@ -67,12 +67,16 @@ export default function Page(props) {
 
 export async function getStaticProps(props) {
 	const content = await getContent(`${props.params.slug}.md`);
-	const projects = await getProjects('design');
+
+	if (!content.attributes.projects) {
+		const projects = await getProjects('design');
+		content.attributes.projects = projects;
+	}
+	
 
 	return {
 		props: {
 			...content,
-			projects
 		}
 	};
 }

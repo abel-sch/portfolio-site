@@ -53,15 +53,17 @@ export default function ProjectTile(props) {
 			`}
 		>
 		<div className='block whitespace-nowrap' ref={ref}>{project.title}</div>
-		<div ref={containerRef} className='absolute top-0 bottom-0 left-4 right-4 lg:left-8 right-8'></div>
-		<Image
-			src={project.thumbnail}
-			className={`
-				opacity-0 group-hover:opacity-100 scale group-hover:scale-110
-				ease-in-out duration-700 transition object-contain`}
-			alt=''
-			fill
-		/>
+		<div ref={containerRef} className='absolute top-0 bottom-0 left-4 right-4 lg:left-8 lg:right-8'></div>
+		{ project.thumbnail && (
+			<Image
+				src={project.thumbnail}
+				className={`
+					opacity-0 group-hover:opacity-100 scale group-hover:scale-110
+					ease-in-out duration-700 transition object-contain`}
+				alt=''
+				fill
+			/>
+		)}
 	</Link>
 	)
 }
