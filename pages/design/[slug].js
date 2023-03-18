@@ -39,7 +39,7 @@ export default function Page(props) {
 				<ProjectDescription intro={intro} content={html} title={title}/>
 				<ContentBlocks content={content}/>
 				{ projects && (
-					<div className="mt-72">
+					<div className="mt-24 lg:mt-32">
 						<ProjectList currentProject={title} projects={projects}/>
 					</div>
 				)}
