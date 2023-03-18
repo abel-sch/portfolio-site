@@ -47,19 +47,12 @@ export default function MyApp({ Component, pageProps }) {
 	}, [router])
 
 	return (
-		<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-			<SmoothScrollContainer ref={smoothScrollContainerRef} scrollFactor={0}>
+		<SmoothScrollContainer ref={smoothScrollContainerRef} scrollFactor={0}>
+			<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
 				<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
-					{ isHome && <motion.div
-						initial="initial" animate="animate" exit="exit"
-						variants={variants}
-						transition={{ ease: "easeInOut"}}
-						className="bg-black z-50 w-screen fixed inset-0 pointer-events-none">
-					</motion.div>
-					}
 					<Component {...pageProps}/>
 				</PageWrapper>
-			</SmoothScrollContainer>
-		</AnimatePresence>
+			</AnimatePresence>
+		</SmoothScrollContainer>
 	)
 }
