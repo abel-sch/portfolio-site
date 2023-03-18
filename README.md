@@ -28,3 +28,4 @@ All development is done on the `dev`-branch. Once tested, a merge to the main br
 - [ ] create hover states
 - [ ] convert all js to typescript
 - [ ] move static content to CMS (Contentful?)
+- [ ] smoother scrolling on mobile (easing / replace Monomove w/ Framer Motion?)
