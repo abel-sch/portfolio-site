@@ -31,7 +31,7 @@ export default function Hero(props) {
 			<div ref={canvasRef} className="grow relative">
 				<HeroCanvas rect={canvasSize}/>
 			</div>
-			<div className="font-bold text-6xl py-4 px-4">
+			<div className="font-bold text-4xl lg:text-6xl py-4 px-4">
 				<motion.h1
 					initial="initial"
 					animate="animate"
@@ -41,7 +41,7 @@ export default function Hero(props) {
 					Abel Schupp <br/>
 					<span className="font-normal">Designer</span> + <span className="font-normal">Developer</span>
 				</motion.h1>
-				<p className="font-medium text-white">hallo@abelschupp.nl</p>
+				<p className="font-medium text-3xl text-white">hallo@abelschupp.nl</p>
 			</div>
 		</header>
 	);
