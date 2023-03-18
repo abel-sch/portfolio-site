@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import MailButton from '@components/MailButton';
+import BackButton from '@components/BackButton';
 
 export default function PageWrapper(props) {
 	const {
@@ -15,6 +16,7 @@ export default function PageWrapper(props) {
 			</Head>
 			<div
 				className={`wrapper flex flex-col relative ${className}`}>
+				<BackButton/>
 				{ children }
 				<MailButton/>
 			</div>
