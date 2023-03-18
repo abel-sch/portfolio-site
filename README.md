@@ -19,7 +19,7 @@ All development is done on the `dev`-branch. Once tested, a merge to the main br
 
 ## TODO
 - [ ] add big back button on deeper pages
-- [ ] make external links open in new tab
+- [X] make external links open in new tab
 - [X] make page links on index page consistent in styling with other links
 - [X] remove page transitions
 - [ ] fix page transitions
