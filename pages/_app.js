@@ -16,22 +16,22 @@ export default function MyApp({ Component, pageProps }) {
 	const router = useRouter();
 	const isHome = router.asPath == '/';
 	const smoothScrollContainerRef = useRef();
-	const variants = {
-		initial: {
-			y: ["0%", "0"],
-		},
-		animate: {
-			y: "100%",
-			transition: {
-				delay: .2,
-				ease: "easeInOut",
-				duration: .2
-			}
-		},
-		exit: {
-			y: ['100%', '0%'],
-		}
-	}
+	// const variants = {
+	// 	initial: {
+	// 		y: ["0%", "0"],
+	// 	},
+	// 	animate: {
+	// 		y: "100%",
+	// 		transition: {
+	// 			delay: .2,
+	// 			ease: "easeInOut",
+	// 			duration: .2
+	// 		}
+	// 	},
+	// 	exit: {
+	// 		y: ['100%', '0%'],
+	// 	}
+	// }
 
 	useEffect(() => {
 		const handleStart = (string) => {
@@ -47,19 +47,12 @@ export default function MyApp({ Component, pageProps }) {
 	}, [router])
 
 	return (
-		<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-			<SmoothScrollContainer ref={smoothScrollContainerRef} scrollFactor={0}>
+		<SmoothScrollContainer ref={smoothScrollContainerRef} scrollFactor={0}>
+			{/* <AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}> */}
 				<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
-					{ isHome && <motion.div
-						initial="initial" animate="animate" exit="exit"
-						variants={variants}
-						transition={{ ease: "easeInOut"}}
-						className="bg-black z-50 w-screen fixed inset-0 pointer-events-none">
-					</motion.div>
-					}
 					<Component {...pageProps}/>
 				</PageWrapper>
-			</SmoothScrollContainer>
-		</AnimatePresence>
+			{/* </AnimatePresence> */}
+		</SmoothScrollContainer>
 	)
 }

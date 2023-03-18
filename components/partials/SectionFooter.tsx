@@ -19,10 +19,10 @@ export default function SectionFooter(props: Props) {
 	} = props;
 
 	const filteredPages = pages.filter(page => page.path != currentSlug);
-	const sectionLinks = () => filteredPages.map((page, index) => (
+	const sectionLinks = () => filteredPages.map((page, index) =>(
 		<Fragment key={page.path}>
-			{ index >=0 && <> of </>}
-			<SectionLink href={page.path}>{page.title}</SectionLink>
+			{ index > 0 && <> of </>}
+			<SectionLink href={`/${page.path}`}>{page.title}</SectionLink>
 		</Fragment>
 	))
 

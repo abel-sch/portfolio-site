@@ -4,6 +4,7 @@ import {useRef} from 'react';
 import smoothScroller from '@scripts/utils/SmoothScroller';
 import useIsomorphicLayoutEffect from '@scripts/hooks/useIsomorphicLayoutEffect';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
+import { getLinkTarget } from "@scripts/utils/getLinkTarget";
 
 // type project = {
 //     title: string,
@@ -52,8 +53,9 @@ export default function ProjectTile(props) {
 	return (
 		<Link
 			href={project.slug}
+			target={getLinkTarget(project.slug)}
 			className={`
-				bg-white text-8xl lg:text-[10rem] font-bold px-4 py-16 lg:p-8 lg:py-16 flex group
+				bg-grey text-8xl lg:text-[10rem] font-bold px-4 py-12 lg:p-8 lg:py-16 flex group
 				hover:text-white hover:bg-black
 				transition ease-in-out duration-700
 				relative overflow-hidden
