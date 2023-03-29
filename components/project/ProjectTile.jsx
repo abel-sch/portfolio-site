@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import {useRef} from 'react';
-import smoothScroller from '@scripts/utils/SmoothScroller';
-import useIsomorphicLayoutEffect from '@scripts/hooks/useIsomorphicLayoutEffect';
+import {useRef, useMemo} from 'react';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import { getLinkTarget } from "@scripts/utils/getLinkTarget";
+import { useScroll, useSpring, motion, useTransform } from "framer-motion";
 
 // type project = {
 //     title: string,
@@ -25,6 +24,10 @@ export default function ProjectTile(props) {
 	const containerRef = useRef(null);
 	const containerSize = useResizeObserver(containerRef);
 	const textSize = useResizeObserver(ref);
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ["end start", "start end"]
+	});
 
 	const calculateOffset = (textWidth, containerWidth) => {
 		if (textWidth > containerWidth) {
@@ -33,22 +36,19 @@ export default function ProjectTile(props) {
 			return containerWidth - textWidth;
 		}
 	}
+	const maxOffset = useMemo(() => calculateOffset(textSize.width,containerSize.width),[textSize, containerSize]);
 
-	useIsomorphicLayoutEffect(() => {
-		if (ref.current && containerRef.current && containerSize) {
-			const maxOffset = calculateOffset(textSize.width,containerSize.width);
+	const xSpring = useSpring(scrollYProgress, {
+		stiffness: 200,
+		damping: 50,
+		restDelta: 0.001
+	});
 
-			smoothScroller.add(ref.current, o => {
-				ref.current.style.transform = `translate3d(${o.factor * maxOffset}px, 0, 0)`;
-			});
-		}
-
-		return () => {
-			if (ref.current) {
-				smoothScroller.remove(ref.current);
-			}
-		};
-	}, [ref, containerSize, textSize]);
+	const x = useTransform(
+		xSpring,
+		[0, 1],
+		[0, maxOffset]
+	)
 
 	return (
 		<Link
@@ -61,18 +61,18 @@ export default function ProjectTile(props) {
 				relative overflow-hidden
 			`}
 		>
-		<div className='block whitespace-nowrap' ref={ref}>{project.title}</div>
-		<div ref={containerRef} className='absolute top-0 bottom-0 left-4 right-4 lg:left-8 lg:right-8'></div>
-		{ project.thumbnail && (
-			<Image
-				src={project.thumbnail}
-				className={`
-					opacity-0 group-hover:opacity-100 scale group-hover:scale-110
-					ease-in-out duration-700 transition object-contain`}
-				alt=''
-				fill
-			/>
-		)}
-	</Link>
+			<motion.div style={{ x }} className='block whitespace-nowrap' ref={ref}>{project.title}</motion.div>
+			<motion.div ref={containerRef} className='absolute top-0 bottom-0 left-4 right-4 lg:left-8 lg:right-8'></motion.div>
+			{ project.thumbnail && (
+				<Image
+					src={project.thumbnail}
+					className={`
+						opacity-0 group-hover:opacity-100 scale group-hover:scale-125
+						ease-in-out duration-700 transition object-contain`}
+					alt=''
+					fill
+				/>
+			)}
+		</Link>
 	)
 }
