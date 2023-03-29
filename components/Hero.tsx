@@ -3,8 +3,9 @@ import {useRef, useMemo} from 'react';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import dynamic from 'next/dynamic';
 
-export default function Hero(props) {
-	const canvasRef = useRef();
+
+export default function Hero() {
+	const canvasRef = useRef(null);
 	const canvasSize = useResizeObserver(canvasRef);
 	const variants = {
 		initial: {
@@ -29,7 +30,7 @@ export default function Hero(props) {
 	return (
 		<header className="w-full h-screen flex flex-col">
 			<div ref={canvasRef} className="grow relative">
-				<HeroCanvas rect={canvasSize}/>
+				{ canvasSize && <HeroCanvas rect={canvasSize}/> }
 			</div>
 			<div className="font-bold text-4xl lg:text-6xl py-4 px-4">
 				<motion.h1

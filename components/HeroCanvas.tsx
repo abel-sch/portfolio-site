@@ -4,7 +4,7 @@ import {animate as animateMotion} from 'framer-motion';
 import {useEffect, useRef, useState} from "react";
 
 interface ComponentProps {
-	rect: DOMRectReadOnly
+	rect: DOMRectReadOnly | false
 }
 
 const OFFSET = 60.0 as const;
@@ -17,7 +17,7 @@ export default function HeroCanvas(props : ComponentProps) {
 		rect: {
 			height,
 			width
-		}
+		} = false
 	} = props;
 
 	const sketchInstance = useRef<p5Types | null>(null);
