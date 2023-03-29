@@ -3,7 +3,6 @@ import {useRef, useMemo} from 'react';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import dynamic from 'next/dynamic';
 
-
 export default function Hero() {
 	const canvasRef = useRef(null);
 	const canvasSize = useResizeObserver(canvasRef);
