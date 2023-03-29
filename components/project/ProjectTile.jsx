@@ -67,7 +67,7 @@ export default function ProjectTile(props) {
 				<Image
 					src={project.thumbnail}
 					className={`
-						opacity-0 group-hover:opacity-100 scale group-hover:scale-110
+						opacity-0 group-hover:opacity-100 scale group-hover:scale-125
 						ease-in-out duration-700 transition object-contain`}
 					alt=''
 					fill
