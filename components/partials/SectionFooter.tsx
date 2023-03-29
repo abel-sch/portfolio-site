@@ -48,7 +48,7 @@ function SectionLink(props: LinkProps) {
 		children
 	} = props;
 
-	const ref = useRef(null);
+	const ref = useRef<HTMLDivElement>(null);
 	const size = useResizeObserver(ref);
 	const width = size ? size.width * -1 : 0;
 
@@ -58,12 +58,14 @@ function SectionLink(props: LinkProps) {
 				ref={ref}
 				whileHover={{
 					backgroundPositionX: '0px',
-					transition: {
-						ease: 'easeInOut',
-						duration: .5
-					}
 				}}
-				style={{backgroundPositionX: `${-1 * size.width}px`}}
+				style={{
+					backgroundPositionX: `${width}px`
+				}}
+				transition={{
+					ease: 'easeInOut',
+					duration: .5
+				}}
 				className="inline-block font-bold bg-gradient-to-r from-blue to-blue bg-left-bottom bg-no-repeat bg-[length:100%_0.15em]"
 			>
 				{children}

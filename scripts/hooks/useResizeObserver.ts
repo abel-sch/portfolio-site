@@ -1,8 +1,9 @@
-import {useState, useRef, useEffect} from 'react';
+import {useState, useRef, useEffect, RefObject, DOMElement} from 'react';
 
-const useResizeObserver = (ref) => {
-	const observer = useRef(null);
-	const [clientRect, setClientRect] = useState(false);
+
+const useResizeObserver = (ref: RefObject<HTMLDivElement>) => {
+	const observer = useRef<null | ResizeObserver>(null);
+	const [clientRect, setClientRect] = useState<false | DOMRectReadOnly>(false);
 
 	useEffect(() => {
 		observer.current = new ResizeObserver((entries) => {
@@ -16,7 +17,7 @@ const useResizeObserver = (ref) => {
 		if (ref.current && observer?.current?.observe) {
 			observer.current.observe(ref.current)
 		}
-	}, [ref.current]);
+	}, [ref]);
 
 	return clientRect;
 }
