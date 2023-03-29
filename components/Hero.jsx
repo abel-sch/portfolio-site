@@ -39,7 +39,7 @@ export default function Hero(props) {
 					variants={variants}
 				>
 					Abel Schupp <br/>
-					<span className="font-normal">Designer</span> + <span className="font-normal">Developer</span>
+					<span className="font-normal">Creative developer</span>
 				</motion.h1>
 				<p className="font-medium text-3xl text-white">hallo@abelschupp.nl</p>
 			</div>
