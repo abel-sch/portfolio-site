@@ -25,7 +25,7 @@ export default function BackButton() {
 	}
 
 	return (
-		<motion.div className="fixed top-4 left-4 z-50 text-white drop-shadow-xl text-5xl lg:text-8xl font-bold">
+		<motion.div className="fixed top-4 left-4 z-40 text-white drop-shadow-xl text-5xl lg:text-8xl font-bold">
 			<AnimatePresence>
 				{ isVisible && (
 					<motion.div
