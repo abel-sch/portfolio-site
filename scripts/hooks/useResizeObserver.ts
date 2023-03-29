@@ -1,5 +1,4 @@
-import {useState, useRef, useEffect, RefObject, DOMElement} from 'react';
-
+import {useState, useRef, useEffect, RefObject} from 'react';
 
 const useResizeObserver = (ref: RefObject<HTMLElement>) => {
 	const observer = useRef<null | ResizeObserver>(null);
