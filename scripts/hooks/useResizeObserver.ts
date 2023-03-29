@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect, RefObject, DOMElement} from 'react';
 
 
-const useResizeObserver = (ref: RefObject<HTMLDivElement>) => {
+const useResizeObserver = (ref: RefObject<HTMLElement>) => {
 	const observer = useRef<null | ResizeObserver>(null);
 	const [clientRect, setClientRect] = useState<false | DOMRectReadOnly>(false);
 
