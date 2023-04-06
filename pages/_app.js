@@ -54,8 +54,6 @@ export default function MyApp({ Component, pageProps }) {
 							exit="exit"
 							variants={variants}
 							className={`absolute bottom-0 left-0 right-0 h-full ${targetRoute == '/' ? 'bg-grey' : 'bg-black'}`}>
-
-							{/* className={`bg-gradient-to-b absolute bottom-0 left-0 right-0 h-[200%] from-transparent ${targetRoute == '/' ? 'via-grey via-30% to-grey' : 'via-black via-30% to-black'}`}> */}
 						</motion.div>
 					</div>
 				</PageWrapper>
