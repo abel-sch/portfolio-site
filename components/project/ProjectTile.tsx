@@ -5,14 +5,14 @@ import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import { getLinkTarget } from "@scripts/utils/getLinkTarget";
 import { useScroll, useSpring, motion, useTransform } from "framer-motion";
 
-type project = {
+type Project = {
 	title: string,
 	slug: string,
-	thumbnail: string
+	thumbnail?: string
 }
 
 interface Props {
-	project: project
+	project: Project
 }
 
 export default function ProjectTile(props: Props) {
