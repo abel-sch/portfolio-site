@@ -1,13 +1,13 @@
 import ProjectTile from "./ProjectTile";
 
-type project = {
+type Project = {
 	title: string
 	slug: string
 	thumbnail?: string
 }
 
 interface Props {
-	projects: project[]
+	projects: Project[]
 	currentProject: string | null
 	className: string | null
 }
