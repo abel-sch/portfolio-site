@@ -43,7 +43,7 @@ export default function Hero() {
 					Abel Schupp <br/>
 					<span className="font-normal">Creative developer</span>
 				</motion.h1>
-				<p className="font-medium text-3xl text-white">hallo@abelschupp.nl</p>
+				<p className="mt-2 md:mt-4 font-normal text-3xl">hallo@abelschupp.nl</p>
 			</div>
 		</motion.header>
 	);
