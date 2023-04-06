@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface Props {
 	featuredImage: string,
@@ -37,8 +38,15 @@ export default function ProjectHeader(props: Props) {
 	} : {};
 
 	return (
-		<header style={style} className={`w-full flex justify-center py-8 lg:py-16 ${backgroundColorClass}`}>
-			<div className="max-w-screen-lg w-full aspect-video relative">
+		<header
+			style={style}
+			className={`w-full flex justify-center py-8 lg:py-16 ${backgroundColorClass}`}
+		>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: .5, ease: "easeInOut"}}
+				className="max-w-screen-lg w-full aspect-video relative">
 				{ type == 'image' && (
 					<Image
 						src={featuredImage}
@@ -52,7 +60,7 @@ export default function ProjectHeader(props: Props) {
 						<source src={video} type="video/mp4"/>
 					</video>
 				)}
-			</div>
+			</motion.div>
 		</header>
 	)
 }

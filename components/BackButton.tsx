@@ -14,7 +14,7 @@ export default function BackButton() {
 		} else if (latest < 100 && isVisible) {
 			setIsVisible(false);
 		}
-	  });
+	});
 
 	if (router.asPath == '/') return;
 
@@ -29,10 +29,18 @@ export default function BackButton() {
 			<AnimatePresence>
 				{ isVisible && (
 					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-					><Link href={backPath(router.asPath)}>←</Link>
+						initial={{ opacity: 0, x: -10 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: -10}}
+						whileHover={{
+							x: -10,
+							transition: {
+								type: 'spring',
+								damping: 8,
+								mass: 1
+							},
+						}}
+					><Link scroll={false} href={backPath(router.asPath)}>←</Link>
 					</motion.div>
 				)}	
 			</AnimatePresence>

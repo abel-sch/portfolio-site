@@ -5,17 +5,17 @@ import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import { getLinkTarget } from "@scripts/utils/getLinkTarget";
 import { useScroll, useSpring, motion, useTransform } from "framer-motion";
 
-// type project = {
-//     title: string,
-//     slug: string,
-//     thumbnail: string
-// }
+type Project = {
+	title: string,
+	slug: string,
+	thumbnail?: string
+}
 
-// interface Props {
-//     project: project
-// }
+interface Props {
+	project: Project
+}
 
-export default function ProjectTile(props) {
+export default function ProjectTile(props: Props) {
 	const {
 		project
 	} = props;
@@ -29,14 +29,18 @@ export default function ProjectTile(props) {
 		offset: ["end start", "start end"]
 	});
 
-	const calculateOffset = (textWidth, containerWidth) => {
+	const calculateOffset = (textWidth: number, containerWidth: number) => {
 		if (textWidth > containerWidth) {
 			return -1 * (textWidth - containerWidth);
 		} else {
 			return containerWidth - textWidth;
 		}
 	}
-	const maxOffset = useMemo(() => calculateOffset(textSize.width,containerSize.width),[textSize, containerSize]);
+	const maxOffset = useMemo(() => {
+		if (textSize && containerSize) {
+			return calculateOffset(textSize.width,containerSize.width)
+		}
+	}, [textSize, containerSize]);
 
 	const xSpring = useSpring(scrollYProgress, {
 		stiffness: 200,
@@ -52,6 +56,7 @@ export default function ProjectTile(props) {
 
 	return (
 		<Link
+			scroll={false}
 			href={project.slug}
 			target={getLinkTarget(project.slug)}
 			className={`

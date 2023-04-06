@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 All development is done on the `dev`-branch. Once tested, a merge to the main branch will trigger a deploy on Vercel to `https://staging.abelschupp.nl`.
 
 ## TODO
-- [ ] add big back button on deeper pages
+- [X] add big back button on deeper pages
 - [X] make external links open in new tab
 - [X] make page links on index page consistent in styling with other links
 - [X] remove page transitions
