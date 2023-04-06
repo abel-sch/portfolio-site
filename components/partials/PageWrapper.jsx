@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import MailButton from '@components/MailButton';
+import { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
 import BackButton from '@components/BackButton';
 import ClickParticles from '@components/partials/ClickParticles';
 
@@ -8,6 +10,21 @@ export default function PageWrapper(props) {
 		className = '',
 		children
 	} = props;
+
+	useEffect(() => {
+		const lenis = new Lenis();
+
+		function raf(time) {
+			lenis.raf(time)
+			requestAnimationFrame(raf)
+		}
+
+		requestAnimationFrame(raf);
+
+		return () => {
+			lenis.destroy();
+		}
+	}, []);
 
 	return (
 		<>

@@ -13,8 +13,7 @@ export default function Hero() {
 		animate: {
 			opacity: 1,
 			transition: {
-				delay: .5 ,
-				duration: .5
+				duration: .2
 			}
 		},
 		exit: {
@@ -27,22 +26,25 @@ export default function Hero() {
 	}), []);
 
 	return (
-		<header className="w-full h-screen flex flex-col">
+		<motion.header
+		initial="initial"
+		animate="animate"
+		exit="exit"
+		variants={variants}
+		
+		className="w-full h-screen flex flex-col">
 			<div ref={canvasRef} className="grow relative">
 				{ canvasSize && <HeroCanvas rect={canvasSize}/> }
 			</div>
 			<div className="font-bold text-4xl lg:text-6xl py-4 px-4">
 				<motion.h1
-					initial="initial"
-					animate="animate"
-					exit="exit"
-					variants={variants}
+
 				>
 					Abel Schupp <br/>
 					<span className="font-normal">Creative developer</span>
 				</motion.h1>
-				<p className="font-medium text-3xl text-white">hallo@abelschupp.nl</p>
+				<p className="mt-2 md:mt-4 font-normal text-3xl">hallo@abelschupp.nl</p>
 			</div>
-		</header>
+		</motion.header>
 	);
 }

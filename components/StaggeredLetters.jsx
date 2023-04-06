@@ -22,14 +22,6 @@ export default function StaggeredLetters(props) {
 				delayChildren: .2,
 				staggerChildren
 			}
-		},
-		exit: {
-			backgroundSize: "0% .15em",
-			transition: {
-				duration: .5,
-				staggerDirection: -1,
-				staggerChildren
-			}
 		}
 	}
 
@@ -37,7 +29,6 @@ export default function StaggeredLetters(props) {
 		<motion.div
 			initial="initial"
 			animate="animate"
-			exit="exit"
 			className="inline bg-gradient-to-r from-blue to-blue bg-left-bottom bg-no-repeat bg-[length:100%_0.15em]"
 			variants={variants}
 		>
@@ -57,9 +48,6 @@ function Letter(props) {
 		},
 		animate: {
 			opacity: 1,
-		},
-		exit: {
-			opacity: 0,
 		}
 	}
 

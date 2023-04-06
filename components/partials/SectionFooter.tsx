@@ -53,7 +53,7 @@ function SectionLink(props: LinkProps) {
 	const width = size ? size.width * -1 : 0;
 
 	return (
-		<Link href={href} >
+		<Link href={href} scroll={false}>
 			<motion.div
 				ref={ref}
 				whileHover={{
@@ -63,7 +63,7 @@ function SectionLink(props: LinkProps) {
 					backgroundPositionX: `${width}px`
 				}}
 				transition={{
-					ease: 'easeInOut',
+					ease: [.29,-0.01,.14,1],
 					duration: .5
 				}}
 				className="inline-block font-bold bg-gradient-to-r from-blue to-blue bg-left-bottom bg-no-repeat bg-[length:100%_0.15em]"
