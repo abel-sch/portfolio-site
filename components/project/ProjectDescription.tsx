@@ -23,7 +23,7 @@ export default function ProjectDescription(props: Props) {
 					<motion.div
 						initial={{ x: 100, opacity: 0 }}
 						animate={{ x: -100, opacity: 1 }}
-						transition={{ duration: 1, ease: "easeInOut"}}
+						transition={{ duration: 2, ease: "easeInOut"}}
 					>{title}</motion.div>
 				</motion.h1>
 			)}
