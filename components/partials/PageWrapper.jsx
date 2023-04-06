@@ -3,13 +3,18 @@ import MailButton from '@components/MailButton';
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import BackButton from '@components/BackButton';
-import ClickParticles from '@components/partials/ClickParticles';
+import dynamic from 'next/dynamic';
+import { useMemo } from 'react';
 
 export default function PageWrapper(props) {
 	const {
 		className = '',
 		children
 	} = props;
+
+	const ClickParticles = dynamic(
+		() => import('@components/partials/ClickParticles'),
+	{ ssr: false });
 
 	useEffect(() => {
 		const lenis = new Lenis();

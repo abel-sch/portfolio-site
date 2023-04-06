@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useMemo } from "react"
 import useResizeObserver from "@scripts/hooks/useResizeObserver"
-import usePointerPlus from "@scripts/hooks/usePointerPlus";
+import Renderer from "@scripts/libs/PlusRenderer";
 
 type Point = {
 	x: number
@@ -11,36 +11,31 @@ export default function ClickParticles() {
 	const containerRef = useRef(null);
 	const containerSize = useResizeObserver(containerRef);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const [clickPosition, setClickPosition] = useState<Point | null>(null);
-	const canvasRenderer = usePointerPlus(canvasRef);
-	console.log(canvasRenderer);
+	const canvasRenderer = useMemo(() => new Renderer(), []);
+
+	useEffect(() => {
+		if (canvasRef.current && canvasRenderer) {
+			canvasRenderer.setCanvas(canvasRef.current);
+			console.log('set canvas');
+		}
+	}, [canvasRef, canvasRenderer]);
+
 
 	useEffect(() => {
 		const onClick = (e: MouseEvent) => {
-			setClickPosition({
-				x: e.clientX,
-				y: e.clientY
-			});
-		};
+			canvasRenderer.add(e.clientX, e.clientY);
+		}
+
 		window.addEventListener('click', onClick);
 
 		return () => window.removeEventListener('click', onClick);
-	}, []);
-
+	}, [canvasRenderer])
 
 	useEffect(() => {
-		if (clickPosition && canvasRef.current) {
-			const context = canvasRef.current.getContext('2d');
-
-			if (context && containerSize) {
-				context.clearRect(0, 0, containerSize.width, containerSize.height);
-				context.font = "30px Arial";
-				context.fillStyle = "white";
-				context.textAlign = "center";
-				context.fillText("+", clickPosition.x, clickPosition.y);
-			}
+		if (containerSize && canvasRenderer) {
+			canvasRenderer.resize(containerSize.width, containerSize.height);
 		}
-	}, [clickPosition, containerSize])
+	}, [containerSize, canvasRenderer]);
 
 	return (
 		<div
