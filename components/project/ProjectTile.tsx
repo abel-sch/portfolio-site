@@ -38,7 +38,7 @@ export default function ProjectTile(props: Props) {
 	}
 	const maxOffset = useMemo(() => {
 		if (textSize && containerSize) {
-			calculateOffset(textSize.width,containerSize.width)
+			return calculateOffset(textSize.width,containerSize.width)
 		}
 	}, [textSize, containerSize]);
 
