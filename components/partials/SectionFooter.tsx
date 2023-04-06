@@ -64,7 +64,7 @@ function SectionLink(props: LinkProps) {
 				}}
 				transition={{
 					ease: 'easeInOut',
-					duration: .5
+					duration: .2
 				}}
 				className="inline-block font-bold bg-gradient-to-r from-blue to-blue bg-left-bottom bg-no-repeat bg-[length:100%_0.15em]"
 			>
