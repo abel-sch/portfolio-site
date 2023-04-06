@@ -33,8 +33,12 @@ export default function BackButton() {
 						animate={{ opacity: 1, x: 0 }}
 						exit={{ opacity: 0, x: -10}}
 						whileHover={{
-							x: [0, -10, 0],
-							transition: { duration: .4 },
+							x: -10,
+							transition: {
+								type: 'spring',
+								damping: 8,
+								mass: 1
+							},
 						}}
 					><Link scroll={false} href={backPath(router.asPath)}>←</Link>
 					</motion.div>
