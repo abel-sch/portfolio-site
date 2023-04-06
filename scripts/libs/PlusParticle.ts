@@ -1,19 +1,12 @@
 import Renderer from "./PlusRenderer";
 
-const randomPos = (x:number, y:number) => {
-	return {
-		x: x + (Math.random() * 20) - 10,
-		y: y + (Math.random() * 20) - 10
-	}
-}
-
 export default class PlusParticle {
 	startPosition: { x: number, y :number };
 	life: number;
 	renderer: Renderer;
 
 	constructor(x: number, y: number, renderer: Renderer) {
-		this.startPosition = randomPos(x, y);
+		this.startPosition ={ x, y };
 		this.life = 20;
 		this.renderer = renderer;
 	}

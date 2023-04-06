@@ -11,14 +11,21 @@ export default function ClickParticles() {
 	const containerRef = useRef(null);
 	const containerSize = useResizeObserver(containerRef);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const [canvas, setCanvas] = useState<HTMLCanvasElement | null>();
 	const canvasRenderer = useMemo(() => new Renderer(), []);
 
 	useEffect(() => {
-		if (canvasRef.current && canvasRenderer) {
-			canvasRenderer.setCanvas(canvasRef.current);
+		console.log(canvas);
+		if (canvas && canvasRenderer) {
+			canvasRenderer.setCanvas(canvas);
 			console.log('set canvas');
 		}
-	}, [canvasRef, canvasRenderer]);
+	}, [canvas, canvasRenderer]);
+
+	// useEffect(() => {
+	// 	console.log(canvas);
+		
+	// }, [canvas])
 
 
 	useEffect(() => {
@@ -44,7 +51,7 @@ export default function ClickParticles() {
 		>
 			{ containerSize && (
 				<canvas
-					ref={canvasRef}
+					ref={ref => setCanvas(ref)}
 					width={containerSize.width}
 					height={containerSize.height}
 				/>

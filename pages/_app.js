@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { AnimatePresence,motion } from 'framer-motion';
 import PageWrapper from '@components/partials/PageWrapper';
+import dynamic from 'next/dynamic';
 
 const inter = Manrope({
 	subsets: ['latin'],
@@ -11,6 +12,10 @@ const inter = Manrope({
 })
 
 export default function MyApp({ Component, pageProps }) {
+	const ClickParticles = dynamic(
+		() => import('@components/partials/ClickParticles'),
+	{ ssr: false });
+
 	const router = useRouter();
 	const isHome = router.asPath == '/';
 	const [targetRoute, setTargetRoute] = useState('');
@@ -40,6 +45,7 @@ export default function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
+			<ClickParticles/>
 			<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
 				<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
 					<Component {...pageProps}/>

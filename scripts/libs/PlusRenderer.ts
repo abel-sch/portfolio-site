@@ -1,5 +1,12 @@
 import PlusParticle from "./PlusParticle";
 
+const randomPos = (x:number, y:number) => {
+	return {
+		x: x + (Math.random() * 40) - 20,
+		y: y + (Math.random() * 40) - 20
+	}
+}
+
 export default class Renderer {
 	canvas: HTMLCanvasElement | null;
 	size: { width: number, height: number };
@@ -15,6 +22,7 @@ export default class Renderer {
 
 	setCanvas(canvas: HTMLCanvasElement) {
 		this.canvas = canvas;
+		console.log('setting canvas', canvas);
 	}
 
 	resize(width: number, height: number) {
@@ -22,7 +30,10 @@ export default class Renderer {
 	}
 
 	add(x: number, y: number) {
-		this.particles.push(new PlusParticle(x, y, this));
+		for (let i = 0; i < 5; i++) {
+			const {x: xPos, y: yPos} = randomPos(x, y);
+			this.particles.push(new PlusParticle(xPos, yPos, this));
+		}
 
 		if (!this.isRendering) {
 			this.render();
@@ -32,8 +43,6 @@ export default class Renderer {
 
 	tick() {
 		this.particles.forEach(particle => particle.tick());
-		console.log(this.particles.length);
-		console.log(this.canvas);
 	}
 
 	remove(particle: PlusParticle) {

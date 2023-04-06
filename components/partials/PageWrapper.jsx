@@ -3,7 +3,6 @@ import MailButton from '@components/MailButton';
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import BackButton from '@components/BackButton';
-import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 
 export default function PageWrapper(props) {
@@ -11,10 +10,6 @@ export default function PageWrapper(props) {
 		className = '',
 		children
 	} = props;
-
-	const ClickParticles = dynamic(
-		() => import('@components/partials/ClickParticles'),
-	{ ssr: false });
 
 	useEffect(() => {
 		const lenis = new Lenis();
@@ -37,7 +32,6 @@ export default function PageWrapper(props) {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<ClickParticles/>
 			<div
 				className={`wrapper flex flex-col relative ${className}`}>
 				<BackButton/>
