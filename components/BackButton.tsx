@@ -36,7 +36,7 @@ export default function BackButton() {
 							x: [0, -10, 0],
 							transition: { duration: .4 },
 						}}
-					><Link href={backPath(router.asPath)}>←</Link>
+					><Link scroll={false} href={backPath(router.asPath)}>←</Link>
 					</motion.div>
 				)}	
 			</AnimatePresence>

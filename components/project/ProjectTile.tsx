@@ -56,6 +56,7 @@ export default function ProjectTile(props: Props) {
 
 	return (
 		<Link
+			scroll={false}
 			href={project.slug}
 			target={getLinkTarget(project.slug)}
 			className={`

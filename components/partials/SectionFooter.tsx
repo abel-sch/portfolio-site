@@ -53,7 +53,7 @@ function SectionLink(props: LinkProps) {
 	const width = size ? size.width * -1 : 0;
 
 	return (
-		<Link href={href} >
+		<Link href={href} scroll={false}>
 			<motion.div
 				ref={ref}
 				whileHover={{
