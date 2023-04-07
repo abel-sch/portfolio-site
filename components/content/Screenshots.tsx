@@ -63,9 +63,6 @@ function ImageBlock(props: {
 		animate
 	} = props;
 
-	console.log(animate);
-
-
 	const { scrollYProgress } = useScroll({
 		target: container,
 		offset: ["start end", "end start"]
@@ -83,14 +80,12 @@ function ImageBlock(props: {
 	const opacity = useTransform(clampedProgress,
 		(progress) => {
 			
-			return 1 - .75 * Math.abs(progress)
+			return 1 -  Math.abs(progress)
 		}
 	);
-		
 	
 	const setY = animate == true ? y : 0;
 	
-
 	return (
 		<motion.div key={image} style={{ y: setY, opacity }} className={`relative w-full ${aspectRatio} ${colClasses} rounded overflow-hidden`}>
 			<Image src={image} fill alt=""/>
