@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { Manrope } from '@next/font/google';
+import { Manrope } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { AnimatePresence,motion } from 'framer-motion';

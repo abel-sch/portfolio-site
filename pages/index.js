@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Hero from '@components/Hero';
-import {motion} from 'framer-motion';
 import getPages from '@scripts/content/getPages';
 import ProjectList from '@components/project/ProjectList';
 
