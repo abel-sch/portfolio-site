@@ -1,3 +1,5 @@
+'use client';
+
 import {motion} from 'framer-motion';
 import {useRef, useMemo} from 'react';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';

@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import {useRef, useMemo} from 'react';
@@ -57,7 +59,7 @@ export default function ProjectTile(props: Props) {
 	return (
 		<Link
 			scroll={false}
-			href={project.slug}
+			href={`${project.slug}`}
 			target={getLinkTarget(project.slug)}
 			className={`
 				bg-grey text-8xl lg:text-[10rem] font-bold px-4 py-12 lg:p-8 lg:py-16 flex group

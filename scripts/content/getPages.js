@@ -23,7 +23,7 @@ export default async function getPages() {
 			const {attributes} = await import(`content/${path}.md`);
 
 			return {
-				path,
+				slug: `/${path}`,
 				...attributes,
 			};
 		}));

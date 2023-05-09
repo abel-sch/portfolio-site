@@ -8,8 +8,8 @@ type Project = {
 
 interface Props {
 	projects: Project[]
-	currentProject: string | null
-	className: string | null
+	currentProject?: string | null
+	className?: string | null
 }
 
 export default function ProjectList(props: Props) {

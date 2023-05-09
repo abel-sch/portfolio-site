@@ -1,3 +1,5 @@
+'use client';
+
 import Container from "@components/Container";
 import Link from "next/link";
 import { Fragment, useRef } from "react";
@@ -11,7 +13,7 @@ interface Props {
 
 interface Page {
 	title: string
-	path: string
+	slug: string
 }
 
 export default function SectionFooter(props: Props) {
@@ -20,12 +22,12 @@ export default function SectionFooter(props: Props) {
 		currentSlug
 	} = props;
 
-	const filteredPages = pages.filter(page => page.path != currentSlug);
+	const filteredPages = pages.filter(page => page.slug != `/${currentSlug}`);
 	const sectionLinks = () => filteredPages.map((page, index) =>(
-		<Fragment key={page.path}>
+		<span key={page.slug}>
 			{ index > 0 && <> of </>}
-			<SectionLink href={`/${page.path}`}>{page.title}</SectionLink>
-		</Fragment>
+			<SectionLink href={page.slug}>{page.title}</SectionLink>
+		</span>
 	))
 
 	return (

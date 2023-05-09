@@ -1,5 +1,6 @@
-import {motion} from 'framer-motion';
+'use client';
 
+import {motion} from 'framer-motion';
 import StaggeredLetters from '@components/StaggeredLetters';
 
 export default function PageHeader(props) {
