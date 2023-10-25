@@ -1,14 +1,24 @@
 
 import { getPageBySlug, getPages } from '@/sanity/query/page';
-import PageContent from '@components/page/PageContent';
-
+import PageHeader from '@components/PageHeader';
+import Introduction from '@components/page/Introduction';
+import SectionFooter from '@components/partials/SectionFooter';
+import { PortableText } from '@portabletext/react';
 
 export default async function Page({ params }: { params: { slug: string}}) {
     const pageData = await getPageBySlug(params.slug)
+    const { title, introduction, slug } = pageData
     const pages = await getPages()
 
      return (
-      <PageContent content={{...pageData}} pages={pages}/>
+
+			<div className="h-full w-full bg-black grow">
+				<PageHeader title={title}/>
+        <Introduction><PortableText value={ introduction }/></Introduction>
+
+				{/* { projects && <ProjectList projects={projects}/> } */}
+				<SectionFooter currentSlug={slug} pages={pages}/>
+			</div>
 	)
 }
 
