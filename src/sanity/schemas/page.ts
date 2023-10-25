@@ -26,6 +26,54 @@ export default defineType({
       title: 'Introduction',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'contentType',
+      title: 'Content Type',
+      type: 'string',
+      options: {
+        list: [
+          {
+            title: 'Links',
+            value: 'links'
+          }, {
+            title: 'Projects',
+            value: 'projects'
+          }
+        ],
+        layout: 'radio'
+      }
+    }),
+    defineField({
+      name: 'links',
+      title: 'Links',
+      type: 'array',
+      of: [
+        {
+          name: 'link',
+          type: 'object',
+          title: 'Link',
+          fields: [
+            {
+              name: 'label',
+              type: 'string',
+              title: 'Label',
+              validation: Rule => Rule.required()
+            },
+            {
+              name: 'url',
+              type: 'url',
+              title: 'URL',
+              validation: Rule => Rule.required()
+            },
+            {
+              name: 'image',
+              type: 'image',
+              title: 'Image',
+            }
+          ]
+        }
+      ]
+    }),
   ],
 
   preview: {

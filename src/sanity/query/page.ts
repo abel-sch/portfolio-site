@@ -10,13 +10,22 @@ export type FullPage = {
     title: string,
     slug: string
     introduction: PortableTextObject
+    _id: string
+    links?: Link[]
+}
+
+type Link = {
+    title: string
+    slug: string
 }
 
 export const getPages = async () => {
     return await client.fetch<Page[]>(
         `*[_type == "page"] {
-            ...,
-            "slug": slug.current
+            title,
+            introduction,
+              _id,
+            "slug": slug.current,
         }`,
         {},
         {
@@ -31,7 +40,14 @@ export const getPageBySlug = async (slug: string) => {
         `*[_type == "page" && slug.current == $slug][0] {
             ...,
             "slug": slug.current,
-            introduction 
+            introduction,
+            contentType == "links" => {
+              links[] {
+                "title": label,
+                image,
+                "slug": url
+              }
+            }
         }`,
         {
             slug
