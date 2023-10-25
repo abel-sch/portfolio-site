@@ -1,4 +1,4 @@
-export default function MailButton() {
+export default function MailButton({ email }: { email: string}) {
     return (
         <div className={`
             fixed rounded-full bg-grey
@@ -8,7 +8,7 @@ export default function MailButton() {
             flex justify-center items-center
             scale transition hover:scale-110`
         }>
-            <a className="-mt-[19%]" href="mailto:hallo@abelschupp.nl">@</a>
+            <a className="-mt-[19%]" href={`mailto:${email}`}>@</a>
         </div>
     )
 }

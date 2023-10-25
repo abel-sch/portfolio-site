@@ -1,3 +1,4 @@
+import { getHomePage } from '@/sanity/query/homePage';
 import MailButton from '@components/MailButton';
 import Wrapper from '@components/partials/Wrapper';
 import '@styles/globals.css';
@@ -13,18 +14,21 @@ export const metadata = {
   description: 'Creative developer',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  const homePage = await getHomePage()
+
   return (
     <html lang="nl">
       <body className={`${inter.variable} font-sans`}>
         <Wrapper>
           {children}
         </Wrapper>
-        <MailButton/>
+        { homePage.email && <MailButton email={homePage.email}/>}
       </body>
     </html>
   )

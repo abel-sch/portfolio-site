@@ -4,8 +4,9 @@ import {motion} from 'framer-motion';
 import {useRef, useMemo} from 'react';
 import useResizeObserver from '@scripts/hooks/useResizeObserver';
 import dynamic from 'next/dynamic';
+import { HomePage } from '@/sanity/query/homePage';
 
-export default function Hero() {
+export default function Hero({ title, subtitle, email } : HomePage) {
 	const canvasRef = useRef(null);
 	const canvasSize = useResizeObserver(canvasRef);
 	const variants = {
@@ -42,10 +43,10 @@ export default function Hero() {
 				<motion.h1
 
 				>
-					Abel Schupp <br/>
-					<span className="font-normal">Creative developer</span>
+					{ title } <br/>
+					{ <span className="font-normal">{ subtitle }</span> }
 				</motion.h1>
-				<p className="mt-2 md:mt-4 font-normal text-3xl">hallo@abelschupp.nl</p>
+				{ email && <p className="mt-2 md:mt-4 font-normal text-3xl">{ email }</p> }
 			</div>
 		</motion.header>
 	);
