@@ -3,6 +3,7 @@ import {motion} from 'framer-motion';
 import PageHeader from '@components/PageHeader';
 import ProjectList from '@components/project/ProjectList';
 import SectionFooter from '@components/partials/SectionFooter';
+// import { getPages } from 'sanity/query/page';
 
 async function getData() {
     const res = await fetch('http://localhost:3000/api/pages', { cache: 'force-cache' });
@@ -26,22 +27,22 @@ async function getPageData(slug: string) {
 
 
 export default async function Page(props: any) {
-    const { params }  = props;
-    const pageData = await getPageData(params.slug);
-    const { pages } = await getData();
-    const {
-        attributes: {
-            title,
-            projects
-        },
-        html,
-        slug
-     } = await getPageData(params.slug);
+    // const { params }  = props;
+    // const pageData = await getPageData(params.slug);
+    // const { pages } = await getData();
+    // const {
+    //     attributes: {
+    //         title,
+    //         projects
+    //     },
+    //     html,
+    //     slug
+    //  } = await getPageData(params.slug);
 
      return (
 		<>
 			<div className="h-full w-full bg-black grow">
-				<PageHeader title={title}/>
+				{/* <PageHeader title={title}/> */}
 				{/* <motion.div
 					initial="initial"
 					animate="animate"
@@ -54,16 +55,16 @@ export default async function Page(props: any) {
 						dangerouslySetInnerHTML={{__html: props.html}}>
 					</div>
 				</motion.div> */}
-				{ projects && <ProjectList projects={projects}/> }
-				<SectionFooter currentSlug={slug} pages={pages}/>
+				{/* { projects && <ProjectList projects={projects}/> } */}
+				{/* <SectionFooter currentSlug={slug} pages={pages}/> */}
 			</div>
 		</>
 	)
 }
 
-export async function generateStaticParams() {
-    const { pages } = await getData();
-    return pages.map((page: any) => {
-        return { slug: page.slug.replace(/^\/+/, '')};
-    });
-}
+// export async function generateStaticParams() {
+//     const pages = await getPages()
+//     return pages.map((page: any) => {
+//         return { slug: page.slug.replace(/^\/+/, '')};
+//     });
+// }

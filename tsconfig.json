@@ -24,7 +24,8 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@scripts/*": ["scripts/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@cms/*": ["./sanity/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

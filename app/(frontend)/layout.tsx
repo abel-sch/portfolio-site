@@ -1,5 +1,5 @@
 import Wrapper from '@components/partials/Wrapper';
-import '../styles/globals.css';
+import '../../styles/globals.css';
 import { Manrope } from 'next/font/google';
 import MailButton from '@components/MailButton';
 const inter = Manrope({
