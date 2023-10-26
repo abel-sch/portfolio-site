@@ -1,9 +1,6 @@
-interface Props {
-    type: string,
-    video: string
-}
+import { MockupBlock } from "@/sanity/schemas/fields/blocks/mockup";
 
-export default function Mockup(props: Props) {
+export default function Mockup(props: MockupBlock) {
     const {
         video
     } = props;

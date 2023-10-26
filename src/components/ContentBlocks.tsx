@@ -1,21 +1,11 @@
+'use client'
+
+import { ContentBlocks } from '@/sanity/schemas/fields/content';
 import ContentTypes from '@components/content';
 
-interface Prop {
-    content: ContentBlock[]
-}
-
-interface ContentBlock {
-    type: string,
-    [key: string]: any
-}
-
-export default function ContentBlocks(props: Prop) {
-	const {
-		content,
-	} = props;
-
+export default function ContentBlocks({ content }: { content: ContentBlocks }) {
     return content?.map((c, i) => {
-		const ContentType = ContentTypes[c.type];
+		const ContentType = ContentTypes[c._type];
 		return <ContentType key={`content-${i}`} {...c}  />;
 	}) || null;
 }

@@ -1,6 +1,7 @@
 
 import { getPageBySlug, getPages } from '@/sanity/query/page';
 import { getProjectBySlug, getProjects } from '@/sanity/query/project';
+import ContentBlocks from '@components/ContentBlocks';
 import Introduction from '@components/page/Introduction';
 import SectionFooter from '@components/partials/SectionFooter';
 import ProjectDescription from '@components/project/ProjectDescription';
@@ -28,7 +29,7 @@ export default async function Page({ params }: { params: { slug: string}}) {
         <ProjectHeader
             {...pageData.header}/>
         <ProjectDescription {...pageData}/>
-        {/* <ContentBlocks content={content}/> */}
+        <ContentBlocks content={pageData.content}/>
         {/* { projects && (
             <div className="mt-24 lg:mt-32">
                 <ProjectList currentProject={pageData.title} projects={projects}/>

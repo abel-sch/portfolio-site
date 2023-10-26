@@ -1,5 +1,3 @@
-import {defineType} from 'sanity'
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Mockup',
@@ -13,4 +11,9 @@ export default {
         // validation: (Rule) => Rule.required()
     }
   ]
+}
+
+export type MockupBlock = {
+    _type: 'mockup'
+    video: string
 }

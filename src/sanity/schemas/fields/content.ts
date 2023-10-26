@@ -1,5 +1,5 @@
 import {defineType} from 'sanity'
-import mockup from './blocks/mockup'
+import mockup, { MockupBlock } from './blocks/mockup'
 
 export default defineType({
   title: 'Content',
@@ -13,6 +13,9 @@ export default defineType({
 export const query = ` {
     _type == 'mockup' => {
         ...,
-        "mock": "test"
     }
 }`
+
+export type ContentBlock = MockupBlock
+
+export type ContentBlocks = ContentBlock[]
