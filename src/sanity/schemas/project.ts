@@ -36,6 +36,11 @@ export default defineType({
       title: 'Text',
       type: 'blockContent',
     }),
+    {
+      name: 'content',
+      title: 'Content',
+      type: 'content'
+    }
   ],
 
   preview: {

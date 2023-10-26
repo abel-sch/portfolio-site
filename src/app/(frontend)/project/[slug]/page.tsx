@@ -7,7 +7,6 @@ import ProjectDescription from '@components/project/ProjectDescription';
 import ProjectHeader from '@components/project/ProjectHeader';
 import ProjectList from '@components/project/ProjectList';
 import { PortableText } from '@portabletext/react';
-import { notFound } from 'next/navigation'
 
 export default async function Page({ params }: { params: { slug: string}}) {
     const pageData = await getProjectBySlug(params.slug)
@@ -30,11 +29,11 @@ export default async function Page({ params }: { params: { slug: string}}) {
             {...pageData.header}/>
         <ProjectDescription {...pageData}/>
         {/* <ContentBlocks content={content}/> */}
-        { projects && (
+        {/* { projects && (
             <div className="mt-24 lg:mt-32">
                 <ProjectList currentProject={pageData.title} projects={projects}/>
             </div>
-        )}
+        )} */}
         <SectionFooter currentSlug="design" pages={pages} />
     </article>
 

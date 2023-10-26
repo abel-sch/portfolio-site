@@ -39,6 +39,13 @@ export const getProjects = async () => {
     )
 }
 
+const contentQuery = `{
+    _type == 'mockup' => {
+        ...,
+        "mock": "test"
+    }
+}`
+
 export const getProjectBySlug = async (slug: string) => {
     return await client.fetch<FullProject>(
         `*[_type == "project" && slug.current == $slug][0] {
@@ -56,7 +63,7 @@ export const getProjectBySlug = async (slug: string) => {
                         "blurHash": asset->.metadata.blurHash
                     }
                 }
-            }
+            },
         }`,
         {
             slug
