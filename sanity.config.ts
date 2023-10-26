@@ -45,6 +45,7 @@ export default defineConfig({
                   .documentId("homePage")
               ),
               S.documentTypeListItem("page").title("Pages"),
+              S.documentTypeListItem("project").title("Projects"),
 
           ]),
     }),

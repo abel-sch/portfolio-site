@@ -22,7 +22,9 @@ export default function SectionFooter(props: Props) {
 		currentSlug
 	} = props;
 
-	const filteredPages = pages.filter(page => page.slug != `/${currentSlug}`);
+	const filteredPages = pages.filter(page => {
+		return page.slug != `${currentSlug}`
+	});
 	const sectionLinks = () => filteredPages.map((page, index) =>(
 		<span key={page.slug}>
 			{ index > 0 && <> of </>}

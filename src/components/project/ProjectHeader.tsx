@@ -1,19 +1,13 @@
+"use client"
+
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Header } from '@/sanity/schemas/fields/header';
 
-interface Props {
-	featuredImage: string,
-	type?: string
-	video?: string,
-	color: string
-}
-
-export default function ProjectHeader(props: Props) {
+export default function ProjectHeader(props: Header) {
 	const {
-		featuredImage,
 		type,
-		video = '',
-		color
+		color = 'black'
 	} = props;
 
 	const colors = {
@@ -47,17 +41,18 @@ export default function ProjectHeader(props: Props) {
 				animate={{ opacity: 1 }}
 				transition={{ duration: .5, ease: "easeInOut"}}
 				className="max-w-screen-lg w-full aspect-video relative">
-				{ type == 'image' && (
+				{ type == 'image' &&   (
 					<Image
-						src={featuredImage}
+						src={props.image.url}
 						alt=""
-						fill
 						priority
+						width={props.image.metadata.dimensions.width}
+						height={props.image.metadata.dimensions.height}
 					/>
 				)}
 				{ type == 'video' && (
 					<video autoPlay muted loop playsInline>
-						<source src={video} type="video/mp4"/>
+						<source src={props.video} type="video/mp4"/>
 					</video>
 				)}
 			</motion.div>

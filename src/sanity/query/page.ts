@@ -41,12 +41,19 @@ export const getPageBySlug = async (slug: string) => {
             ...,
             "slug": slug.current,
             introduction,
+            contentType,
             contentType == "links" => {
               links[] {
                 "title": label,
                 image,
                 "slug": url
               }
+            },
+            contentType == "projects" => {
+                "links": *[_type == "project"] {
+                    title,
+                    "slug": "project/" + slug.current
+                }
             }
         }`,
         {
@@ -57,4 +64,4 @@ export const getPageBySlug = async (slug: string) => {
             next: {tags: ['pages', `page-${slug}`]},
         },
     )
-}
+}            

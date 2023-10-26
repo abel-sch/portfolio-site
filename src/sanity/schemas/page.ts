@@ -47,6 +47,7 @@ export default defineType({
       name: 'links',
       title: 'Links',
       type: 'array',
+      hidden: ({ parent}) => parent.contentType !== 'links',
       of: [
         {
           name: 'link',

@@ -1,15 +1,15 @@
+"use client"
+
+import { FullProject } from "@/sanity/query/project";
+import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion"
+import { PortableTextBlock } from "sanity"
 
-interface Props {
-	intro: string,
-	content: string,
-	title: string
-}
 
-export default function ProjectDescription(props: Props) {
+export default function ProjectDescription(props: FullProject) {
 	const {
-		intro,
-		content,
+		introduction,
+		text,
 		title
 	} = props;
 
@@ -34,8 +34,8 @@ export default function ProjectDescription(props: Props) {
 				className="mx-auto flex max-w-screen-lg"
 			>
 				<div className="prose prose-invert">
-					{ intro && <div className="text-2xl lg:text-4xl lg:leading-snug leading-normal" dangerouslySetInnerHTML={{__html: intro}}></div> }
-					{ content && <div className="text-lg" dangerouslySetInnerHTML={{__html: content}}></div> }
+					{ introduction && <div className="text-2xl lg:text-4xl lg:leading-snug leading-normal"><PortableText value={introduction}/></div> }
+					{ text && <div className="text-lg"><PortableText value={text}/></div> }
 				</div>
 			</motion.div>
 		</motion.div>
