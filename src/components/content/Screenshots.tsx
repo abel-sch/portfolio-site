@@ -4,14 +4,17 @@ import Container from '@components/Container';
 import { Screenshots } from '@/sanity/schemas/fields/blocks/screenshots';
 
 import { PortableText } from '@portabletext/react';
-import useNextBlurhash from "use-next-blurhash";
-import { FC } from 'react';
+import { BlurhashCanvas } from "react-blurhash";
+import { decode } from 'blurhash';
+import { FC, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export default function Screenshots(props: Screenshots) {
 	const {
 		images,
 		text
 	} = props;
+	const [loaded, isLoaded] = useState(false)
+	console.log(images)
 
 	const cols:number = images.length;
 	const aspectRatio:string = cols == 1 ? 'aspect-[1.88]' : 'aspect-[9/16]';
@@ -22,8 +25,9 @@ export default function Screenshots(props: Screenshots) {
 			<figure className='grid md:cols-3 w-full mb-12 lg:mb-24 gap-8'>
 				{ images.map(image => (
 					<div key={image.url} className={`relative w-full ${aspectRatio} ${colClasses} rounded overflow-hidden`}>
-						{/* <Image src={image.url} sizes='100vw' fill alt=""/> */}
-						<BlurImage url={image.url} blurHash={image.metadata.blurHash}/>
+						{/* <img src={image.metadata.blurHash}/> */}
+						{/* <BlurhashCanvas className="w-full h-full object-cover" hash={image.metadata.blurHash} width={image.metadata.dimensions.width} height={image.metadata.dimensions.height}/> */}
+						<Image blurDataURL={image.metadata.blurHash} placeholder="blur" src={image.url} sizes='100vw' fill alt="" onLoadingComplete={() => isLoaded(true)}/>
 					</div>
 				))}
 				{ text && (
@@ -36,9 +40,3 @@ export default function Screenshots(props: Screenshots) {
 	)
 }
 
-const BlurImage = ({url, blurHash} : {url: string, blurHash: string}) => {
-	const [blurDataUrl] = useNextBlurhash(blurHash);
-	console.log(blurDataUrl)
-
-	return <Image src={url} sizes='100vw' placeholder="blur" blurDataURL={blurDataUrl} fill alt=""/>
-}

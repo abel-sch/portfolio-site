@@ -10,7 +10,6 @@ export default async function Page({ params }: { params: { slug: string}}) {
     const pageData = await getPageBySlug(params.slug)
     const { title, introduction, slug } = pageData
     const pages = await getPages()
-    console.log(pageData.links, 'hoi')
 
      return (
 

@@ -3,7 +3,7 @@ export const image = `
     "url": asset->.url,
     "metadata": {
         "dimensions": asset->.metadata.dimensions,
-        "blurHash": asset->.metadata.blurHash
+        "blurHash": asset->.metadata.lqip
     }
 }`
 
