@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Container from '@components/Container';
 
-interface Props {
+export type Screenshots = {
+	_type: 'screenshots'
 	type: string,
 	images: string[],
 	html: string
 }
 
-export default function Screenshots(props: Props) {
+export default function Screenshots(props: Screenshots) {
 	const {
 		images,
 		html

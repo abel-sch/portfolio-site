@@ -1,13 +1,13 @@
 import Container from '@components/Container';
 import {useState} from 'react';
 
-interface Props {
-    type: 'frame',
-    url: string,
+export type Frame = {
+    _type: 'frame'
+    url: string
     html?: string
 }
 
-export default function Frame(props: Props) {
+export default function Frame(props: Frame) {
     const {
         url,
         html

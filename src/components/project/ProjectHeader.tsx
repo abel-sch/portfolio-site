@@ -25,7 +25,7 @@ export default function ProjectHeader(props: Header) {
 			return false;
 		}
 	}
-
+	
 	const backgroundColorClass = getBackgroundColorClass();
 	const style = !backgroundColorClass ? {
 		backgroundColor: color

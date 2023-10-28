@@ -1,22 +1,21 @@
-import React from 'react';
+import { FC } from 'react';
 import Banner from './Banner';
 import Frame from './Frame';
 import ImageBlock from './ImageBlock';
 import Mockup from './Mockup';
 import Screenshots from './Screenshots';
-import { MockupBlock } from '@/sanity/schemas/fields/blocks/mockup';
 import { type ContentBlock } from '@/sanity/schemas/fields/content';
 
 type ContentTypes = {
-	'mockup': (props: MockupBlock) => JSX.Element
-}
+    [Type in ContentBlock['_type']]: FC<Extract<ContentBlock, { _type: Type }>>;
+};
 
-const contentBlocks: ContentTypes = {
-	// banner: Banner,
-	// frame: Frame,
-	// image: ImageBlock,
+const contentTypes: ContentTypes = {
+	image: ImageBlock,
 	mockup: Mockup,
-	// screenshots: Screenshots,
+	banner: Banner,
+	frame: Frame,
+	screenshots: Screenshots
 }
 
-export default contentBlocks;
+export default contentTypes;

@@ -14,7 +14,7 @@ type ImageHeader = {
     image: Image
 }
 
-type Image = {
+export type Image = {
     url: string
     metadata: {
         dimensions: {

@@ -1,6 +1,7 @@
 import { MockupBlock } from "@/sanity/schemas/fields/blocks/mockup";
+import { ReactElement } from "react";
 
-export default function Mockup(props: MockupBlock) {
+export default function Mockup(props: MockupBlock): ReactElement {
     const {
         video
     } = props;

@@ -1,11 +1,13 @@
 import Image from "next/image";
 
-interface Props {
+export type Banner = {
+	_type: 'banner'
 	width: number,
 	height: number,
 	image: string
 }
-export default function ImageBlock(props: Props) {
+
+export default function Banner(props: Banner) {
 	const {
 		image
 	} = props;

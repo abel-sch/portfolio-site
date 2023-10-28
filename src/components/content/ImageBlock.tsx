@@ -1,15 +1,10 @@
 import Image from "next/image";
 import Container from "@components/Container";
+import { ImageBlock } from "@/sanity/schemas/fields/blocks/mockup";
+import { ReactElement } from "react";
 
-interface Props {
-	width: number,
-	height: number,
-	image: string
-}
-export default function ImageBlock(props: Props) {
+export default function ImageBlock(props: ImageBlock): ReactElement {
 	const {
-		width,
-		height,
 		image
 	} = props;
 
@@ -17,9 +12,9 @@ export default function ImageBlock(props: Props) {
 		<Container>
 			<div className="grid grid-cols-12 mb-12 lg:mb-24">
 				<Image
-					src={image}
-					width={width}
-					height={height}
+					src={image.url}
+					width={image.metadata.dimensions.width}
+					height={image.metadata.dimensions.height}
 					className="col-span-12 lg:col-span-10 lg:col-start-2"
 					alt=""/>
 			</div>
