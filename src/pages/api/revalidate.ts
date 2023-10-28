@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   if (secret && !isValidRequest(req, secret)) {
-    res.status(401).json({ message: "Invalid signature" })
+    res.status(405).json({ message: "Invalid signature" })
     return
   }
 
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     switch (type) {
       case "project":
-        await revalidateTag(type)
+        revalidateTag(type)
         return res.json({ message: `Revalidated "${type}" with slug "${slug}"` })
     }
 
