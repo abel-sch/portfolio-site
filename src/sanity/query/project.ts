@@ -2,6 +2,7 @@ import { PortableTextObject } from "sanity"
 import { client } from "../lib/client"
 import { Header } from "../schemas/fields/header"
 import { ContentBlocks } from "../schemas/fields/content"
+import { content, image } from "./content"
 
 export type Project = {
     title: string
@@ -59,21 +60,9 @@ export const getProjectBySlug = async (slug: string) => {
                 type,
                 "video": video.asset->.url,
                 color,
-                image {
-                    "url": asset->.url,
-                    "metadata": {
-                        "dimensions": asset->.metadata.dimensions,
-                        "blurHash": asset->.metadata.blurHash
-                    }
-                }
+                image ${image}
             },
-            content[] {
-                ...,
-                _type == 'mockup' => {
-                  ...,
-                  "video": video.asset->.url,
-                }
-            }
+            content[] ${content},
         }`,
         {
             slug

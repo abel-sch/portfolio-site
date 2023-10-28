@@ -33,7 +33,3 @@ export type Frame = {
     _type: 'frame'
     image: Image
 }
-export type Screenshots = {
-    _type: 'screenshots'
-    video: string
-}
