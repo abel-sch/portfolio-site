@@ -30,6 +30,7 @@ export default function ProjectHeader(props: Header) {
 	const style = !backgroundColorClass ? {
 		backgroundColor: color
 	} : {};
+	console.log(props)
 
 	return (
 		<header
@@ -41,7 +42,7 @@ export default function ProjectHeader(props: Header) {
 				animate={{ opacity: 1 }}
 				transition={{ duration: .5, ease: "easeInOut"}}
 				className="max-w-screen-lg w-full aspect-video relative">
-				{ type == 'image' &&   (
+				{ type == 'image'&& props.image &&   (
 					<Image
 						src={props.image.url}
 						alt=""

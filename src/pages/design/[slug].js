@@ -30,7 +30,7 @@ export default function Page(props) {
 			<Head>
 				<title>{title}</title>
 			</Head>
-			<article className="h-full w-full bg-black grow">
+			{/* <article className="h-full w-full bg-black grow">
 				<ProjectHeader
 					featuredImage={featured_image}
 					type={header_type}
@@ -44,7 +44,7 @@ export default function Page(props) {
 					</div>
 				)}
 				<SectionFooter currentSlug="design" pages={pages} />
-			</article>
+			</article> */}
 		</>
 	)
 }
