@@ -37,7 +37,7 @@ export const getProjects = async () => {
         {},
         {
             cache: 'force-cache',
-            next: {tags: ['projects']},
+            next: {tags: ['project']},
         },
     )
 }
@@ -69,7 +69,7 @@ export const getProjectBySlug = async (slug: string) => {
         },
         {
             cache: 'force-cache',
-            next: {tags: ['projects', `project-${slug}`]},
+            next: {tags: ['project', `project-${slug}`]},
         },
     )
 }            

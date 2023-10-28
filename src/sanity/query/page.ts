@@ -30,7 +30,7 @@ export const getPages = async () => {
         {},
         {
             cache: 'force-cache',
-            next: {tags: ['pages']},
+            next: {tags: ['page']},
         },
     )
 }
@@ -61,7 +61,7 @@ export const getPageBySlug = async (slug: string) => {
         },
         {
             cache: 'force-cache',
-            next: {tags: ['pages', `page-${slug}`]},
+            next: {tags: ['page', `page-${slug}`]},
         },
     )
 }            
