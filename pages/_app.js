@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { AnimatePresence,motion } from 'framer-motion';
 import PageWrapper from '@components/partials/PageWrapper';
+import Script from 'next/script'
 
 const inter = Manrope({
 	subsets: ['latin'],
@@ -40,6 +41,24 @@ export default function MyApp({ Component, pageProps }) {
 
 	return (
 		<>
+			<Script
+			src={`https://www.googletagmanager.com/gtag/js?id=G-5BEFF8SY0N`}
+			strategy="afterInteractive"
+			/>
+			<Script
+			id="google-analytics"
+			strategy="afterInteractive"
+			dangerouslySetInnerHTML={{
+				__html: `
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-5BEFF8SY0N', {
+					page_path: window.location.pathname,
+				});
+				`,
+			}}
+			/>
 			<AnimatePresence initial={false} mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
 				<PageWrapper key={router.asPath} className={`${inter.variable} font-sans`}>
 					<Component {...pageProps}/>
